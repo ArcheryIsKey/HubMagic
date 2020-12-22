@@ -71,6 +71,9 @@ public class Main extends JavaPlugin implements Listener
         this.walkingparticles = new ArrayList<UUID>();
         this.flyingwings = new ArrayList<UUID>();
         this.invis = new ArrayList<UUID>();
+        this.haveCooldownsParticleGun = new ArrayList<UUID>();
+        this.haveCooldownsTeleportGun = new ArrayList<UUID>();
+        this.haveCooldownsSpeedStick = new ArrayList<UUID>();
     }
     
     public void onEnable() {
