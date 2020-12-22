@@ -22,7 +22,6 @@ public class WardrobeCMD implements CommandExecutor
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-        Player p = (Player)sender;
         ItemStack ward = new ItemStack(Material.LEATHER_CHESTPLATE);
         ItemMeta wardm = ward.getItemMeta();
         wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("Wardrobe.Name")));
@@ -32,19 +31,21 @@ public class WardrobeCMD implements CommandExecutor
                 sender.sendMessage(this.pre + " You may not use this command.");
             }
             else {
-                p.getInventory().addItem(new ItemStack[] { ward });
-                p.sendMessage(this.pre + ChatColor.GREEN + " Here's your Wardrobe Selector!");
+            	if(sender instanceof Player) {
+                ((Player) sender).getInventory().addItem(new ItemStack[] { ward });
+                sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Wardrobe Selector!");
+            	}
             }
         }
         else if (args.length == 1) {
             Player t = Bukkit.getPlayer(args[0]);
             if (t.getName() == null) {
-                p.sendMessage(this.pre + ChatColor.RED + " Player not found.");
+                sender.sendMessage(this.pre + ChatColor.RED + " Player not found.");
             }
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { ward });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Wardrobe Selector!");
-                p.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Wardrobe Selector!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Wardrobe Selector!");
             }
         }
         return true;

@@ -21,7 +21,6 @@ public class ParticleGunCMD implements CommandExecutor
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-        Player p = (Player)sender;
         ItemStack gun = new ItemStack(Material.getMaterial("DIAMOND_HORSE_ARMOR"));
         ItemMeta gunmeta = gun.getItemMeta();
         gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("ParticleGun.Name")));
@@ -31,19 +30,21 @@ public class ParticleGunCMD implements CommandExecutor
                 sender.sendMessage(this.pre + " You may not use this command.");
             }
             else {
-                p.getInventory().addItem(new ItemStack[] { gun });
-                p.sendMessage(this.pre + ChatColor.GREEN + " Here's your Particle Gun!");
+            	if(sender instanceof Player) {
+                ((Player) sender).getInventory().addItem(new ItemStack[] { gun });
+                sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Particle Gun!");
+            	}
             }
         }
         else if (args.length == 1) {
             Player t = Bukkit.getPlayer(args[0]);
             if (t.getName() == null) {
-                p.sendMessage(this.pre + ChatColor.RED + " Player not found.");
+                sender.sendMessage(this.pre + ChatColor.RED + " Player not found.");
             }
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { gun });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Particle Gun!");
-                p.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Particle Gun!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Particle Gun!");
             }
         }
         return true;

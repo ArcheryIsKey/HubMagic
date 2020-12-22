@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.projectiles.ProjectileSource;
@@ -32,6 +33,7 @@ public class TeleportGun implements Listener
         ItemMeta bowmeta = bow.getItemMeta();
         bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("TeleportGun.Name")));
         bowmeta.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
+        bowmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         bow.setItemMeta(bowmeta);
         if(e.getPlayer().hasPermission("HubMagic.TeleportGun.Use")) {
             e.getPlayer().getInventory().setItem(Main.plugin.config.getInt("TeleportGun.Slot"), bow);
@@ -55,15 +57,6 @@ public class TeleportGun implements Listener
             	arrow.setVelocity(e.getEntity().getVelocity());
             	arrow.setShooter(p);
                 Main.plugin.haveCooldownsTeleportGun.add(p.getUniqueId());
-                Main.plugin.getServer().getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        Main.plugin.haveCooldownsTeleportGun.remove(p.getUniqueId());
-                        if (Main.plugin.config.getInt("TeleportGun.Cooldown") >= 5 && Main.plugin.config.getBoolean("Enable.CooldownAnnouce", true)) {
-                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("TeleportGun.CooldownMSG")));
-                        }
-                    }
-                }, (long)(20 * Main.plugin.config.getInt("TeleportGun.Cooldown")));
             }
         }
     }

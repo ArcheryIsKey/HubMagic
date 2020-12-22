@@ -68,13 +68,6 @@ public class Main extends JavaPlugin implements Listener
         this.config = this.getConfig();
         this.select = Bukkit.createInventory(null, 27, ChatColor.translateAlternateColorCodes('&', ChatColor.translateAlternateColorCodes('&', this.config.getString("HatSelector.GUIName"))));
         this.ward = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', ChatColor.translateAlternateColorCodes('&', this.config.getString("Wardrobe.GUIName"))));
-        this.walkingparticles = new ArrayList<UUID>();
-        this.flyingwings = new ArrayList<UUID>();
-        this.invis = new ArrayList<UUID>();
-        this.haveCooldownsParticleGun = new ArrayList<UUID>();
-        this.haveCooldownsTeleportGun = new ArrayList<UUID>();
-        this.haveCooldownsSpeedStick = new ArrayList<UUID>();
-        this.arrow = new ArrayList<Projectile>();
     }
     
     public void onEnable() {
@@ -115,8 +108,6 @@ public class Main extends JavaPlugin implements Listener
         this.getCommand("wardrobe").setExecutor(new WardrobeCMD());
         this.getCommand("flyingwings").setExecutor(new FlyingWingsCMD());
         this.getCommand("hubmagic").setExecutor(new PluginCmds());
-        Bukkit.getServer().getPluginManager().registerEvents(this, this);
-        Main.plugin = this;
         this.select.setItem(0, new ItemStack(Material.BEACON));
         this.select.setItem(1, new ItemStack(Material.TNT));
         this.select.setItem(2, new ItemStack(Material.PUMPKIN));
@@ -164,11 +155,12 @@ public class Main extends JavaPlugin implements Listener
         this.ward.setItem(15, new ItemStack(Material.DIAMOND_CHESTPLATE));
         this.ward.setItem(24, new ItemStack(Material.DIAMOND_LEGGINGS));
         this.ward.setItem(33, new ItemStack(Material.DIAMOND_BOOTS));
-        final ItemStack clear = new ItemStack(Material.BARRIER);
-        final ItemMeta clearm = clear.getItemMeta();
+        ItemStack clear = new ItemStack(Material.BARRIER);
+        ItemMeta clearm = clear.getItemMeta();
         clearm.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&4&lClear Wardrobe"));
         clear.setItemMeta(clearm);
         this.ward.setItem(35, clear);
+        Main.plugin = this;
     }
     
     public void onDisable() {

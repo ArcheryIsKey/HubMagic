@@ -52,7 +52,6 @@ public class HatSelector implements Listener
             if (e.getInventory().equals(Main.plugin.select)) {
                 e.setCancelled(true);
                 p.getInventory().setHelmet(e.getCurrentItem());
-                Main.plugin.getServer().getLogger().info("trying to set " + e.getCurrentItem().toString() + " as helmet");
                 p.updateInventory();
             }
         }

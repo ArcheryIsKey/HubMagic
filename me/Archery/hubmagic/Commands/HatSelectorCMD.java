@@ -21,10 +21,6 @@ public class HatSelectorCMD implements CommandExecutor
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-        if (!(sender instanceof Player)) {
-            return false;
-        }
-        Player p = (Player)sender;
         ItemStack selector = new ItemStack(Material.BEACON);
         ItemMeta selectorm = selector.getItemMeta();
         selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("HatSelector.Name")));
@@ -35,19 +31,21 @@ public class HatSelectorCMD implements CommandExecutor
                 		+ " You may not use this command.");
             }
             else {
-                p.getInventory().addItem(new ItemStack[] { selector });
-                p.sendMessage(this.pre + ChatColor.GREEN + " Here's your Hat Selector!");
+            	if(sender instanceof Player) {
+                ((Player) sender).getInventory().addItem(new ItemStack[] { selector });
+                sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Hat Selector!");
+            	}
             }
         }
         else if (args.length == 1) {
             Player t = Bukkit.getPlayer(args[0]);
             if (t.getName() == null) {
-                p.sendMessage(this.pre + ChatColor.RED + " Player not found.");
+                sender.sendMessage(this.pre + ChatColor.RED + " Player not found.");
             }
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { selector });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Hat Selector!");
-                p.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Hat Selector!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Hat Selector!");
             }
         }
         return true;

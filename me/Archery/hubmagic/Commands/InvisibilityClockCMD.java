@@ -22,11 +22,7 @@ public class InvisibilityClockCMD implements CommandExecutor
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-        if (!(sender instanceof Player)) {
-            return false;
-        }
-        Player p = (Player)sender;
-        ItemStack clock = new ItemStack(Material.getMaterial("Clock"));
+        ItemStack clock = new ItemStack(Material.getMaterial("CLOCK"));
         ItemMeta clockmeta = clock.getItemMeta();
         clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);
@@ -35,19 +31,21 @@ public class InvisibilityClockCMD implements CommandExecutor
                 sender.sendMessage(this.pre + " You may not use this command.");
             }
             else {
-                p.getInventory().addItem(new ItemStack[] { clock });
-                p.sendMessage(this.pre + ChatColor.GREEN + " Here's your Invisibility Clock!");
+            	if(sender instanceof Player) {
+                ((Player) sender).getInventory().addItem(new ItemStack[] { clock });
+                sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Invisibility Clock!");
+            	}
             }
         }
         else if (args.length == 1) {
             Player t = Bukkit.getPlayer(args[0]);
             if (t.getName() == null) {
-                p.sendMessage(this.pre + ChatColor.RED + " Player not found.");
+                sender.sendMessage(this.pre + ChatColor.RED + " Player not found.");
             }
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { clock });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Invisibility Clock!");
-                p.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Invisibility Clock!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Invisibility Clock!");
             }
         }
         return true;

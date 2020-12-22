@@ -12,7 +12,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -54,15 +53,6 @@ public class SpeedStick implements Listener
             if (e.getPlayer().hasPermission("HubMagic.SpeedStick.Use") && !Main.plugin.haveCooldownsSpeedStick.contains(p.getUniqueId())) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200, 2));
                 Main.plugin.haveCooldownsSpeedStick.add(p.getUniqueId());
-                Main.plugin.getServer().getScheduler().scheduleSyncDelayedTask((Plugin)Main.plugin, (Runnable)new Runnable() {
-                    @Override
-                    public void run() {
-                        Main.plugin.haveCooldownsSpeedStick.remove(p.getUniqueId());
-                        if (Main.plugin.config.getInt("SpeedStick.Cooldown") >= 5 && Main.plugin.config.getBoolean("Enable.CooldownAnnouce", true)) {
-                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("SpeedStick.CooldownMSG")));
-                        }
-                    }
-                }, (long)(20 * Main.plugin.config.getInt("SpeedStick.Cooldown")));
             }
         }
     }
