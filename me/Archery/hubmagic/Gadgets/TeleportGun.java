@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,7 +13,6 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.projectiles.ProjectileSource;
 
 import me.Archery.hubmagic.Main;
@@ -50,14 +50,17 @@ public class TeleportGun implements Listener
             bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("TeleportGun.Name")));
             bow.setItemMeta(bowmeta);
             if (p.hasPermission("HubMagic.TeleportGun.Use") && e.getBow().isSimilar(bow) && Main.plugin.config.getBoolean("Enable.TeleportGun", true) && !Main.plugin.haveCooldownsTeleportGun.contains(p.getUniqueId())) {
-            	e.getProjectile().setMetadata("teleportgun", new FixedMetadataValue(Main.plugin, "teleportgun"));
+            	e.setCancelled(true);
+            	Arrow arrow = (Arrow) p.getWorld().spawnEntity(p.getLocation(), EntityType.ARROW);
+            	arrow.setVelocity(e.getEntity().getVelocity());
+            	arrow.setShooter(p);
                 Main.plugin.haveCooldownsTeleportGun.add(p.getUniqueId());
                 Main.plugin.getServer().getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
                     @Override
                     public void run() {
                         Main.plugin.haveCooldownsTeleportGun.remove(p.getUniqueId());
                         if (Main.plugin.config.getInt("TeleportGun.Cooldown") >= 5 && Main.plugin.config.getBoolean("Enable.CooldownAnnouce", true)) {
-                            p.sendMessage(TeleportGun.this.pre + ChatColor.GREEN + " You no longer have a cooldown!");
+                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("TeleportGun.CooldownMSG")));
                         }
                     }
                 }, (long)(20 * Main.plugin.config.getInt("TeleportGun.Cooldown")));
@@ -66,15 +69,15 @@ public class TeleportGun implements Listener
     }
     
     @EventHandler
-    public void arrowEvent(ProjectileHitEvent event) {
-        if (event.getEntity() instanceof Arrow) {
-            Arrow arrow = (Arrow)event.getEntity();
+    public void arrowEvent(ProjectileHitEvent e) {
+        if (e.getEntity() instanceof Arrow) {
+            Arrow arrow = (Arrow)e.getEntity();
             ProjectileSource shooter = arrow.getShooter();
             if (shooter instanceof Player) {
-                Player player = (Player)shooter;
+                Player p = (Player)shooter;
                 if (Main.plugin.config.getBoolean("Enable.TeleportGun", true)) {
-                	Main.plugin.getServer().getLogger().info(arrow.getMetadata("teleportgun").toString());
-                    player.teleport(arrow.getLocation().add(0.0, 1.0, 0.0));
+                    p.teleport(arrow.getLocation().add(0.0, 1.0, 0.0));
+                    p.setVelocity(p.getVelocity());
                     arrow.remove();
                 	
                 }

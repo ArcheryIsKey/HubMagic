@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
@@ -16,6 +17,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
 
 import me.Archery.hubmagic.Main;
 
@@ -44,7 +46,9 @@ public class ParticleGun implements Listener
         gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);
         if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && Main.plugin.config.getBoolean("Enable.ParticleGun", true) && e.getPlayer().hasPermission("HubMagic.ParticleGun.Use") && p.getInventory().getItemInMainHand().isSimilar(gun) && !Main.plugin.haveCooldownsParticleGun.contains(p.getUniqueId())) {
-            p.launchProjectile((Class)Snowball.class);
+            Snowball snowball = (Snowball) p.getWorld().spawnEntity(p.getLocation(), EntityType.SNOWBALL);
+            snowball.setShooter(p);
+            snowball.setVelocity(new Vector(5,2,5).multiply(p.getLocation().getDirection()));
             Main.plugin.haveCooldownsParticleGun.add(p.getUniqueId());
             Main.plugin.getServer().getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
                 @Override

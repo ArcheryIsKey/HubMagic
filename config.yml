@@ -95,21 +95,25 @@ JoinBossBar:
    - '&6Please config'
 
 # ALL ITEM NAMES, LEAVE A SPACE IF YOU WANT IT EMPTY #
+# ALL MESSAGES, LEAVE COMLPETELY EMPTY IF YOU WANT REMOVED #
 
 ParticleGun:
    Name: '&6&lParticle Gun'
    Slot: 2
    Cooldown: 1
+   CooldownMSG: ''
 
 TeleportGun:
    Name: '&4&lTeleport Gun'
    Slot: 0
    Cooldown: 1
+   CooldownMSG: ''
 
 SpeedStick:
    Name: '&2&lSpeed Stick'
    Slot: 1
    Cooldown: 1
+   CooldownMSG: ''
 
 InvisibilityClock:
    Name: '&a&lInvisibility Clock'

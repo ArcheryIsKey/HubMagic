@@ -31,7 +31,8 @@ public class InvisibilityClock implements Listener
         this.plugin = instance;
     }
     
-    @EventHandler
+    @SuppressWarnings("deprecation")
+	@EventHandler
     public void onInteract(PlayerInteractEvent e) {
         if (e.getHand() == EquipmentSlot.OFF_HAND) {
             return;

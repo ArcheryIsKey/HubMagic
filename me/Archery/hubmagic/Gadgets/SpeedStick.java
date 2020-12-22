@@ -59,7 +59,7 @@ public class SpeedStick implements Listener
                     public void run() {
                         Main.plugin.haveCooldownsSpeedStick.remove(p.getUniqueId());
                         if (Main.plugin.config.getInt("SpeedStick.Cooldown") >= 5 && Main.plugin.config.getBoolean("Enable.CooldownAnnouce", true)) {
-                            p.sendMessage(SpeedStick.this.pre + ChatColor.GREEN + " You no longer have a cooldown!");
+                            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("SpeedStick.CooldownMSG")));
                         }
                     }
                 }, (long)(20 * Main.plugin.config.getInt("SpeedStick.Cooldown")));
