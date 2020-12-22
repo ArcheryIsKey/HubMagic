@@ -1,34 +1,114 @@
 name: HubMagic
 version: 5.8
+author: ArcheryIsKey
 main: me.Archery.hubmagic.Main
-description: Hub
+description: A plugin with fun tools for hubs.
 api-version: 1.16
 
 commands:
   particlegun:
     usage: /<command>
-    description: Give Yourself The Particle Gun
+    description: Give yourself (or another player) a Particle Gun.
   teleportgun:
     usage: /<command>
-    description: Give Yourself A Teleport Gun
+    description: Give yourself (or another player) a Teleport Gun.
   speedstick:
     usage: /<command>
-    description: Give Yourself A Speed Stick
+    description: Give yourself (or another player) a Speed Stick.
   hubmagic:
     usage: /<command>
-    description: HubMagic
+    description: Shows the HubMagic help page.
   invisibilityclock:
     usage: /<command>
-    description: Give yourself an Invisibility Clock
+    description: Give yourself (or another player) an Invisibility Clock.
   walkingparticles:
     usage: /<command>
     description: Enable or disable Walking Particles for yourself!
   hatselector:
     usage: /<command>
-    description:  Give yourself a Hat Selector
+    description:  Give yourself (or another player) a Hat Selector.
   wardrobe:
     usage: /<command>
-    description: Give yourself a Wardrobe Selector
+    description: Give yourself (or another player) the Wardrobe Selector.
   flyingwings:
     usage: /<command>
-    description: Give yourself some Flying Wings
+    description: Give yourself (or another player) Flying Wings.
+    
+permissions:
+  hubmagic.*:
+    description: All HubMagic commands and tools.
+    children:
+      hubmagic.all: true
+  hubmagic.all:
+    description: All HubMagic commands and tools.
+    children:
+      hubmagic.particlegun.use: true
+      hubmagic.teleportgun.use: true
+      hubmagic.speedstick.use: true
+      hubmagic.help: true
+      hubmagic.invisibilityclock.use: true
+      hubmagic.walkingparticles.use: true
+      hubmagic.hatselector.use: true
+      hubmagic.wardrobe.use: true
+      hubmagic.flyingwings.use: true
+      hubmagic.particlegun.give: true
+      hubmagic.teleportgun.give: true
+      hubmagic.speedstick.give: true
+      hubmagic.invisibilityclock.give: true
+      hubmagic.hatselector.give: true
+      hubmagic.wardrobe.give: true
+      hubmagic.flyingwings.give: true
+      hubmagic.inventorymove.bypass: true
+      hubmagic.antichat.bypass: true
+      hubmagic.antidrop.bypass: true
+      hubmagic.antigrab.bypass: true
+      hubmagic.antiplace.bypass: true
+      hubmagic.adventurejoin.bypass: true
+      hubmagic.invclear.bypass: true
+      hubmagic.joinfirework.use: true
+  hubmagic.particlegun.use:
+    description: Use and spawn with the Particle Gun.
+  hubmagic.teleportgun.use:
+    description: Use and spawn with the Teleport Gun.
+  hubmagic.speedstick.use:
+    description: Use and spawn with the Speed Stick.
+  hubmagic.invisibilityclock.use:
+    description: Use and spawn with the Invisiblity Clock.
+  hubmagic.walkingparticles.use:
+    description: Use the walking particles.
+  hubmagic.hatselector.use:
+    description: Use and spawn with the Hat Selector.
+  hubmagic.wardrobe.use:
+    description: Use and spawn with the Wardrobe Selector.
+  hubmagic.flyingwings.use:
+    description: Use and spawn with the Flying Wings.
+  hubmagic.help:
+    description: Shows the HubMagic help page.
+  hubmagic.particlegun.give:
+    description: Give yourself (or another player) a Particle Gun.
+  hubmagic.teleportgun.give:
+    description: Give yourself (or another player) a Teleport Gun.
+  hubmagic.speedstick.give:
+    description: Give yourself (or another player) a Speed Stick.
+  hubmagic.invisibilityclock.give:
+    description: Give yourself (or another player) an Invisibility Clock.
+  hubmagic.hatselector.give:
+    description: Give yourself (or another player) a Hat Selector.
+  hubmagic.wardrobe.give:
+    description: Give yourself (or another player) the Wardrobe Selector.
+  hubmagic.inventorymove.bypass:
+    description: Bypass the inventory lock, allowing you to move your items around.
+  hubmagic.antichat.bypass:
+    description: Bypass the chat lock, allowing you to chat.
+  hubmagic.antidrop.bypass:
+    description: Bypass the item drop lock, allowing you to drop items.
+  hubmagic.antigrab.bypass:
+    description: Bypass the pickup lock, allowing you to pickup items.
+  hubmagic.antiplace.bypass: 
+    description: Bypass the block place lock, allowing you to place blocks.
+  hubmagic.invclear.bypass:
+    description: Bypass the inventory clear, so your inventory doesn't clear when you join.
+  hubmagic.adventurejoin.bypass:
+    description: Don't get forced into adventure mode when you join.
+      
+    
