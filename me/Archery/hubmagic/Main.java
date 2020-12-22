@@ -68,6 +68,9 @@ public class Main extends JavaPlugin implements Listener
         this.config = this.getConfig();
         this.select = Bukkit.createInventory(null, 27, ChatColor.translateAlternateColorCodes('&', ChatColor.translateAlternateColorCodes('&', this.config.getString("HatSelector.GUIName"))));
         this.ward = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', ChatColor.translateAlternateColorCodes('&', this.config.getString("Wardrobe.GUIName"))));
+        this.walkingparticles = new ArrayList<UUID>();
+        this.flyingwings = new ArrayList<UUID>();
+        this.invis = new ArrayList<UUID>();
     }
     
     public void onEnable() {

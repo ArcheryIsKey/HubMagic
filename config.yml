@@ -114,7 +114,7 @@ SpeedStick:
 
 InvisibilityClock:
    Name: '&a&lInvisibility Clock'
-   PlayersHidden: '&aPlayers are now hidden.'
+   PlayersHidden: '&cPlayers are now hidden.'
    PlayersShown: '&aPlayers are now shown.'
    Slot: 6
 
