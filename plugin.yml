@@ -1,0 +1,34 @@
+name: HubMagic
+version: 5.8
+main: me.Archery.hubmagic.Main
+description: Hub
+api-version: 1.16
+
+commands:
+  particlegun:
+    usage: /<command>
+    description: Give Yourself The Particle Gun
+  teleportgun:
+    usage: /<command>
+    description: Give Yourself A Teleport Gun
+  speedstick:
+    usage: /<command>
+    description: Give Yourself A Speed Stick
+  hubmagic:
+    usage: /<command>
+    description: HubMagic
+  invisibilityclock:
+    usage: /<command>
+    description: Give yourself an Invisibility Clock
+  walkingparticles:
+    usage: /<command>
+    description: Enable or disable Walking Particles for yourself!
+  hatselector:
+    usage: /<command>
+    description:  Give yourself a Hat Selector
+  wardrobe:
+    usage: /<command>
+    description: Give yourself a Wardrobe Selector
+  flyingwings:
+    usage: /<command>
+    description: Give yourself some Flying Wings

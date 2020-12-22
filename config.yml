@@ -1,0 +1,134 @@
+#########################################
+#                                       #
+#  Created By SuperSniper/ArcheryIsKey  #
+#                                       #
+#         ArcheryIsKey#0000             #
+#            on Discord                 #
+#                                       #
+#########################################
+
+# Disable Or Enable Features #
+
+Disable:
+   BlockBreak: true
+   BlockPlace: true
+   ItemDropping: true
+   ItemGrabbing: true
+   FoodLoss: true
+   MobSpawn: true
+   Weather: true
+   QuitMsgs: true
+   JoinMsgs: true
+   ItemMovingInsideInv: true
+   Damage: true
+   Chat: true
+
+Enable:
+   JoinActionBar: true
+   JoinTitle: true
+   JoinBossBar: true
+   InvClearOnJoin: true
+   JoinSound: true
+   QuitSound: true
+   WalkingParicles: true
+   JoinFirework: true
+   AdventureOnJoin: true
+   ParticleGun: true
+   TeleportGun: true
+   SpeedStick: true
+   InisibilityClock: true
+   HatSelector: true
+   Wardrobe: true
+   FlyingWings: true
+
+########################################
+
+# Change Settings #
+# Leave empty to remove #
+
+UnableToPlaceBlocksMSG: '&8You bannot place blocks.'
+UnableToBreakBlocksMSG: '&8You cannot break blocks.'
+UnableToGrabItemsMSG: '&8You cannot grab items.'
+UnableToDropItemsMSG: '&8You cannot drop items.'
+
+UnableToChatMSG: '&8You may not chat.'
+
+JoinSound:
+   Sound: 'UI_BUTTON_CLICK'
+   Volume: 10
+   Pitch: 10
+JoinTitle:
+   Title:
+      Text: '&bHi %player%'
+   Subtitle:
+      Text: '&6by &aSuperSniper &6on SpigotMC'
+
+JoinActionBar: 
+   Text: '&bHubMagic &aBy SuperSniper on &6SpigotMC'
+
+JoinBossBar:
+
+   # Use Message if you have Animate turned off #
+   Message: '&5Hello %player%'
+   
+   BarColor: PINK
+   BarStyle: SEGMENTED_6
+   BarFlag: PLAY_BOSS_MUSIC
+   
+   # ANIMATION #
+   Animate: true
+   AnimateSpeed: .8
+   
+   # Add as many messages as you want! #
+   Messages:
+   - '&6P'
+   - '&6Pl'
+   - '&6Ple'
+   - '&6Plea'
+   - '&6Pleas'
+   - '&6Please'
+   - '&6Please c'
+   - '&6Please co'
+   - '&6Please con'
+   - '&6Please conf'
+   - '&6Please confi'
+   - '&6Please config'
+
+# ALL ITEM NAMES, LEAVE A SPACE IF YOU WANT IT EMPTY #
+
+ParticleGun:
+   Name: '&6&lParticle Gun'
+   Slot: 2
+   Cooldown: 1
+
+TeleportGun:
+   Name: '&4&lTeleport Gun'
+   Slot: 0
+   Cooldown: 1
+
+SpeedStick:
+   Name: '&2&lSpeed Stick'
+   Slot: 1
+   Cooldown: 1
+
+InvisibilityClock:
+   Name: '&a&lInvisibility Clock'
+   PlayersHidden: '&aPlayers are now hidden.'
+   PlayersShown: '&aPlayers are now shown.'
+   Slot: 6
+
+HatSelector:
+   GUIName: '&5Hat Selector'
+   Name: '&c&lHat Selector'
+   Slot: 7
+   
+Wardrobe:
+   GUIName: '&6Wardrobe'
+   Name: '&2&lWardrobe'
+   Slot: 8
+   
+FlyingWings:
+   Name: '&f&lFlying Wings'
+   EnableMSG: '&aYou can now fly!'
+   DisableMSG: '&cYou can no longer fly.'
+   Slot: 4
