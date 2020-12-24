@@ -27,7 +27,7 @@ public class ParticleGun implements Listener
     
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        ItemStack gun = new ItemStack(Material.getMaterial("DIAMOND_HORSE_ARMOR"));
+        ItemStack gun = new ItemStack(Material.DIAMOND_HORSE_ARMOR);
         ItemMeta gunmeta = gun.getItemMeta();
         gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);
@@ -42,7 +42,7 @@ public class ParticleGun implements Listener
             return;
         }
         Player p = e.getPlayer();
-        ItemStack gun = new ItemStack(Material.getMaterial("DIAMOND_HORSE_ARMOR"));
+        ItemStack gun = new ItemStack(Material.DIAMOND_HORSE_ARMOR);
         ItemMeta gunmeta = gun.getItemMeta();
         gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);

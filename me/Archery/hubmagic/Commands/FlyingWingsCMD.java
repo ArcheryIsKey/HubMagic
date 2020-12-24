@@ -21,7 +21,7 @@ public class FlyingWingsCMD implements CommandExecutor
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-        ItemStack gun = new ItemStack(Material.getMaterial("ELYTRA"));
+        ItemStack gun = new ItemStack(Material.ELYTRA);
         ItemMeta gunmeta = gun.getItemMeta();
         gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("FlyingWings.Name")));
         gun.setItemMeta(gunmeta);

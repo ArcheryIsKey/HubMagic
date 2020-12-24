@@ -21,7 +21,7 @@ public class FlyingWings implements Listener
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         if (Main.plugin.config.getBoolean("Enable.FlyingWings", true)) {
-            ItemStack fly = new ItemStack(Material.getMaterial("ELYTRA"));
+            ItemStack fly = new ItemStack(Material.ELYTRA);
             ItemMeta flym = fly.getItemMeta();
             flym.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("FlyingWings.Name")));
             fly.setItemMeta(flym);
@@ -37,7 +37,7 @@ public class FlyingWings implements Listener
             return;
         }
         Player p = e.getPlayer();
-        ItemStack fly = new ItemStack(Material.getMaterial("ELYTRA"));
+        ItemStack fly = new ItemStack(Material.ELYTRA);
         ItemMeta flym = fly.getItemMeta();
         flym.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("FlyingWings.Name")));
         fly.setItemMeta(flym);

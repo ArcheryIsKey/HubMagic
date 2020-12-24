@@ -22,7 +22,7 @@ public class InvisibilityClockCMD implements CommandExecutor
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-        ItemStack clock = new ItemStack(Material.getMaterial("CLOCK"));
+        ItemStack clock = new ItemStack(Material.CLOCK);
         ItemMeta clockmeta = clock.getItemMeta();
         clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);

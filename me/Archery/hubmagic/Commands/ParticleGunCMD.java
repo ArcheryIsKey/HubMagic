@@ -21,7 +21,7 @@ public class ParticleGunCMD implements CommandExecutor
     }
     
     public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
-        ItemStack gun = new ItemStack(Material.getMaterial("DIAMOND_HORSE_ARMOR"));
+        ItemStack gun = new ItemStack(Material.DIAMOND_HORSE_ARMOR);
         ItemMeta gunmeta = gun.getItemMeta();
         gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);

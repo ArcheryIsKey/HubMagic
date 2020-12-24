@@ -39,7 +39,7 @@ public class InvisibilityClock implements Listener
         }
         if(this.pfile.getBoolean("Enable.InvisibilityClock", true)) {
         Player p = e.getPlayer();
-        ItemStack clock = new ItemStack(Material.getMaterial("CLOCK"));
+        ItemStack clock = new ItemStack(Material.CLOCK);
         ItemMeta clockmeta = clock.getItemMeta();
         clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.pfile.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);

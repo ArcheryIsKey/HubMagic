@@ -57,7 +57,7 @@ public class Wardrobe implements Listener
             ItemStack clicked = e.getCurrentItem();
             if(e.getInventory().equals(Main.plugin.ward)) {
             if(clicked != null) {
-            if (clicked.getType() == Material.getMaterial("BARRIER")) {
+            if (clicked.getType() == Material.BARRIER) {
                 p.getInventory().setHelmet((ItemStack) null);
                 p.getInventory().setChestplate((ItemStack) null);
                 p.getInventory().setLeggings((ItemStack) null);
@@ -70,8 +70,8 @@ public class Wardrobe implements Listener
                 e.setCancelled(true);
                 return;
             }
-            if (clicked.getType() == Material.getMaterial("GOLD_HELMET")) {
-                p.getInventory().setHelmet(new ItemStack(Material.getMaterial("GOLD_HELMET")));
+            if (clicked.getType() == Material.GOLDEN_HELMET) {
+                p.getInventory().setHelmet(new ItemStack(Material.GOLDEN_HELMET));
                 e.setCancelled(true);
                 return;
             }
@@ -95,8 +95,8 @@ public class Wardrobe implements Listener
                 e.setCancelled(true);
                 return;
             }
-            if (clicked.getType() == Material.getMaterial("GOLD_CHESTPLATE")) {
-                p.getInventory().setChestplate(new ItemStack(Material.getMaterial("GOLD_CHESTPLATE")));
+            if (clicked.getType() == Material.GOLDEN_CHESTPLATE) {
+                p.getInventory().setChestplate(new ItemStack(Material.GOLDEN_CHESTPLATE));
                 e.setCancelled(true);
                 return;
             }
@@ -115,8 +115,8 @@ public class Wardrobe implements Listener
                 e.setCancelled(true);
                 return;
             }
-            if (clicked.getType() == Material.getMaterial("GOLD_LEGGINGS")) {
-                p.getInventory().setLeggings(new ItemStack(Material.getMaterial("GOLD_LEGGINGS")));
+            if (clicked.getType() == Material.GOLDEN_LEGGINGS) {
+                p.getInventory().setLeggings(new ItemStack(Material.GOLDEN_LEGGINGS));
                 e.setCancelled(true);
                 return;
             }
@@ -145,8 +145,8 @@ public class Wardrobe implements Listener
                 e.setCancelled(true);
                 return;
             }
-            if (clicked.getType() == Material.getMaterial("GOLD_BOOTS")) {
-                p.getInventory().setBoots(new ItemStack(Material.getMaterial("GOLD_BOOTS")));
+            if (clicked.getType() == Material.GOLDEN_BOOTS) {
+                p.getInventory().setBoots(new ItemStack(Material.GOLDEN_BOOTS));
                 e.setCancelled(true);
                 return;
             }
