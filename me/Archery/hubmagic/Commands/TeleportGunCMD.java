@@ -51,7 +51,7 @@ public class TeleportGunCMD implements CommandExecutor
                 t.getInventory().addItem(new ItemStack[] { bow });
                 t.getInventory().setItem(9, new ItemStack(Material.ARROW, 1));
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Teleport Gun!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Teleport Gun!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0] + " has received their Teleport Gun!");
             }
         }
         return true;

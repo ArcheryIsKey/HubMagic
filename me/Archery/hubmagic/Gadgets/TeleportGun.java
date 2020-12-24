@@ -20,11 +20,6 @@ import me.Archery.hubmagic.Main;
 
 public class TeleportGun implements Listener
 {
-    String pre;
-    
-    public TeleportGun() {
-        this.pre = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]";
-    }
     
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {

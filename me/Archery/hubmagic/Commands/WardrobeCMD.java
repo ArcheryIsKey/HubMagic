@@ -45,7 +45,7 @@ public class WardrobeCMD implements CommandExecutor
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { ward });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Wardrobe Selector!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Wardrobe Selector!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0] + " has received their Wardrobe Selector!");
             }
         }
         return true;

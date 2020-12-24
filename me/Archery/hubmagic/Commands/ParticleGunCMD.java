@@ -44,7 +44,7 @@ public class ParticleGunCMD implements CommandExecutor
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { gun });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Particle Gun!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Particle Gun!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0] + " has received their Particle Gun!");
             }
         }
         return true;

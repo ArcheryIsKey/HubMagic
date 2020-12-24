@@ -55,8 +55,7 @@ public class Wardrobe implements Listener
         if (e.getWhoClicked() instanceof Player) {
             Player p = (Player) e.getWhoClicked();
             ItemStack clicked = e.getCurrentItem();
-            if(e.getInventory().equals(Main.plugin.ward)) {
-            if(clicked != null) {
+            if(e.getInventory().equals(Main.plugin.ward) && clicked != null) {
             if (clicked.getType() == Material.BARRIER) {
                 p.getInventory().setHelmet((ItemStack) null);
                 p.getInventory().setChestplate((ItemStack) null);
@@ -163,7 +162,7 @@ public class Wardrobe implements Listener
             if (clicked.getType() == Material.CHAINMAIL_BOOTS) {
                 p.getInventory().setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
                 e.setCancelled(true);
-                  }
+                  
                }
             }
         }

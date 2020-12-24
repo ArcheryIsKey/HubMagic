@@ -45,7 +45,7 @@ public class HatSelectorCMD implements CommandExecutor
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { selector });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Hat Selector!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Hat Selector!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0] + " has received their Hat Selector!");
             }
         }
         return true;

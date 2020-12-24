@@ -17,13 +17,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import me.Archery.hubmagic.Main;
 
-public class SpeedStick implements Listener
-{
-    String pre;
-    
-    public SpeedStick() {
-        this.pre = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]";
-    }
+public class SpeedStick implements Listener {
     
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {

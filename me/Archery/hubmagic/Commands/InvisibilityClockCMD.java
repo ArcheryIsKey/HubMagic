@@ -45,7 +45,7 @@ public class InvisibilityClockCMD implements CommandExecutor
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { clock });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your Invisibility Clock!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their Invisibility Clock!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0] + " has received their Invisibility Clock!");
             }
         }
         return true;

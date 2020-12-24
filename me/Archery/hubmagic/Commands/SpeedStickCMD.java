@@ -45,7 +45,7 @@ public class SpeedStickCMD implements CommandExecutor
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { boot });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here's your SpeedStick!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + args[0].toString() + " has received their SpeedStick!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + args[0] + " has received their SpeedStick!");
             }
         }
     	

@@ -44,7 +44,7 @@ public class FlyingWingsCMD implements CommandExecutor
             if (args.length == 1) {
                 t.getInventory().addItem(new ItemStack[] { gun });
                 t.sendMessage(this.pre + ChatColor.GREEN + " Here are your Flying Wings!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + " " + args[0].toString() + " has Received Their FlyingWings!");
+                sender.sendMessage(this.pre + ChatColor.GREEN + " " + args[0] + " has Received Their FlyingWings!");
             }
         }
         return true;
