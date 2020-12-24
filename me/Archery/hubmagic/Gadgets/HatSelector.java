@@ -5,7 +5,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -27,7 +26,7 @@ public class HatSelector implements Listener
         ItemMeta selectorm = selector.getItemMeta();
         selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("HatSelector.Name")));
         selector.setItemMeta(selectorm);
-        if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.getPlayer().getInventory().getItemInMainHand().isSimilar(selector) && HubMagic.plugin.config.getBoolean("Enable.HatSelector", true) && p.hasPermission("HubMagic.HatSelector.Use")) {
+        if (e.getPlayer().getInventory().getItemInMainHand().equals(selector) && HubMagic.plugin.config.getBoolean("Enable.HatSelector", true) && p.hasPermission("HubMagic.HatSelector.Use")) {
             p.openInventory(HubMagic.plugin.select);
         }
     }

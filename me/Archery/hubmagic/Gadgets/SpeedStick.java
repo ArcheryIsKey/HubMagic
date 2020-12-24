@@ -5,7 +5,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -39,8 +38,8 @@ public class SpeedStick implements Listener {
         ItemMeta bootmeta = boot.getItemMeta();
         bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("SpeedStick.Name")));
         boot.setItemMeta(bootmeta);
-        if (HubMagic.plugin.config.getBoolean("Enable.SpeedStick", true) && e.getAction() == Action.RIGHT_CLICK_AIR) {
-            if (!p.getInventory().getItemInMainHand().isSimilar(boot)) {
+        if (HubMagic.plugin.config.getBoolean("Enable.SpeedStick", true)) {
+            if (!p.getInventory().getItemInMainHand().equals(boot)) {
                 return;
             }
             if (e.getPlayer().hasPermission("HubMagic.SpeedStick.Use") && !HubMagic.plugin.haveCooldownsSpeedStick.contains(p.getUniqueId())) {

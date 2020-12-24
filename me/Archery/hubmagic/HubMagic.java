@@ -8,7 +8,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Projectile;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -50,7 +49,7 @@ import me.Archery.hubmagic.World.AntiMobSpawn;
 import me.Archery.hubmagic.World.AntiPlace;
 import me.Archery.hubmagic.World.AntiWeather;
 
-public class HubMagic extends JavaPlugin implements Listener
+public class HubMagic extends JavaPlugin
 {
     public FileConfiguration config;
     public Inventory select;

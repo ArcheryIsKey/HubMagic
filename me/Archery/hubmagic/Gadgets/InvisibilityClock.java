@@ -49,9 +49,10 @@ public class InvisibilityClock implements Listener
             }
             else {
             	Bukkit.getOnlinePlayers().forEach(pl -> p.showPlayer(HubMagic.plugin, pl));
-                    this.plugin.invis.remove(p.getUniqueId());
-                }
+                this.plugin.invis.remove(p.getUniqueId());
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("InvisibilityClock.PlayersShown")));
+                }
+               
         }
       }
     }

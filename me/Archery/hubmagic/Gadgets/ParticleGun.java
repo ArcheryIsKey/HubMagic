@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -45,7 +44,7 @@ public class ParticleGun implements Listener
         ItemMeta gunmeta = gun.getItemMeta();
         gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);
-        if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && HubMagic.plugin.config.getBoolean("Enable.ParticleGun", true) && e.getPlayer().hasPermission("HubMagic.ParticleGun.Use") && p.getInventory().getItemInMainHand().isSimilar(gun) && !HubMagic.plugin.haveCooldownsParticleGun.contains(p.getUniqueId())) {
+        if (HubMagic.plugin.config.getBoolean("Enable.ParticleGun", true) && e.getPlayer().hasPermission("HubMagic.ParticleGun.Use") && p.getInventory().getItemInMainHand().equals(gun) && !HubMagic.plugin.haveCooldownsParticleGun.contains(p.getUniqueId())) {
         	Location pl = p.getLocation();
         	pl.add(0, 1.5, 0);
             Snowball snowball = (Snowball) p.getWorld().spawnEntity(pl, EntityType.SNOWBALL);

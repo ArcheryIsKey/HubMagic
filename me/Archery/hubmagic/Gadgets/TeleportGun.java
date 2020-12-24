@@ -46,7 +46,7 @@ public class TeleportGun implements Listener
             ItemMeta bowmeta = bow.getItemMeta();
             bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("TeleportGun.Name")));
             bow.setItemMeta(bowmeta);
-            if (p.hasPermission("HubMagic.TeleportGun.Use") && e.getBow().isSimilar(bow) && HubMagic.plugin.config.getBoolean("Enable.TeleportGun", true) && !HubMagic.plugin.haveCooldownsTeleportGun.contains(p.getUniqueId())) {
+            if (p.hasPermission("HubMagic.TeleportGun.Use") && e.getBow().equals(bow) && HubMagic.plugin.config.getBoolean("Enable.TeleportGun", true) && !HubMagic.plugin.haveCooldownsTeleportGun.contains(p.getUniqueId())) {
             	e.setCancelled(true);
             	Arrow arrow = (Arrow) p.getWorld().spawnEntity(p.getLocation(), EntityType.ARROW);
             	arrow.setVelocity(e.getEntity().getVelocity());

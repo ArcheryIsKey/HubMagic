@@ -42,7 +42,7 @@ public class Wardrobe implements Listener
         ItemMeta wardm = ward.getItemMeta();
         wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
         ward.setItemMeta(wardm);
-        if (p.getInventory().getItemInMainHand().isSimilar(ward) && p.hasPermission("HubMagic.Wardrobe.Use")) {
+        if (p.getInventory().getItemInMainHand().equals(ward) && p.hasPermission("HubMagic.Wardrobe.Use")) {
         	
             p.openInventory(HubMagic.plugin.ward);
         }
