@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class HatSelectorCMD implements CommandExecutor
 {
@@ -25,16 +25,18 @@ public class HatSelectorCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack selector = new ItemStack(Material.BEACON);
         ItemMeta selectorm = selector.getItemMeta();
-        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("HatSelector.Name")));
+        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("HatSelector.Name")));
         selector.setItemMeta(selectorm);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.HatSelector.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
+                
             }
             else {
             	if(sender instanceof Player) {
                 ((Player) sender).getInventory().addItem(selector);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Hat Selector!");
+                
             	}
             }
         }

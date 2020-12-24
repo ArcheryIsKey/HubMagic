@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class ParticleGunCMD implements CommandExecutor
 {
@@ -25,16 +25,18 @@ public class ParticleGunCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack gun = new ItemStack(Material.DIAMOND_HORSE_ARMOR);
         ItemMeta gunmeta = gun.getItemMeta();
-        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("ParticleGun.Name")));
+        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.ParticleGun.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
+                
             }
             else {
             	if(sender instanceof Player) {
                 ((Player) sender).getInventory().addItem(gun);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Particle Gun!");
+                
             	}
             }
         }

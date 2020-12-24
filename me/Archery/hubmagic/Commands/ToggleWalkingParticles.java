@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class ToggleWalkingParticles implements CommandExecutor
 {
@@ -15,13 +15,13 @@ public class ToggleWalkingParticles implements CommandExecutor
             return false;
         }
         Player p = (Player)sender;
-        if (Main.plugin.config.getBoolean("Enable.WalkingParticles", true) && p.hasPermission("HubMagic.WalkingParticles.Toggle")) {
-            if (!Main.plugin.walkingparticles.contains(p.getUniqueId())) {
+        if (HubMagic.plugin.config.getBoolean("Enable.WalkingParticles", true) && p.hasPermission("HubMagic.WalkingParticles.Toggle")) {
+            if (!HubMagic.plugin.walkingparticles.contains(p.getUniqueId())) {
                 p.sendMessage(ChatColor.RED + " You've disabled walking particles!");
-                Main.plugin.walkingparticles.add(p.getUniqueId());
+                HubMagic.plugin.walkingparticles.add(p.getUniqueId());
             }
             else {
-                Main.plugin.walkingparticles.remove(p.getUniqueId());
+                HubMagic.plugin.walkingparticles.remove(p.getUniqueId());
                 p.sendMessage(ChatColor.GREEN + " You've enabled walking particles!");
             }
         }

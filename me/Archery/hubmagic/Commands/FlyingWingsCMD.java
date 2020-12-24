@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class FlyingWingsCMD implements CommandExecutor
 {
@@ -25,16 +25,18 @@ public class FlyingWingsCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack gun = new ItemStack(Material.ELYTRA);
         ItemMeta gunmeta = gun.getItemMeta();
-        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("FlyingWings.Name")));
+        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("FlyingWings.Name")));
         gun.setItemMeta(gunmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.FlyingWings.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
+                
             }
             else {
             	if(sender instanceof Player) {
                 ((Player) sender).getInventory().addItem(gun);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here are your Flying Wings!");
+                
             	}
             }
         }
@@ -43,8 +45,10 @@ public class FlyingWingsCMD implements CommandExecutor
             	if(t.isOnline()) {
                 ((Player) t).getInventory().addItem(gun);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " " + args[0] + " has received their FlyingWings!");
+                
             	} else {
                     sender.sendMessage(this.pre + ChatColor.RED + " Player not found.");
+                    
             
         }
       }

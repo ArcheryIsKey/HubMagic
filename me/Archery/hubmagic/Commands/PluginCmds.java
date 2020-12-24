@@ -11,7 +11,7 @@ public class PluginCmds implements CommandExecutor
     public boolean onCommand(CommandSender sender, Command cmd, String commandlabel, String[] args) {
         if (!sender.hasPermission("hubmagic.helsender")) {
             sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]" + " You cannot use this command.");
-            return true;
+            return false;
         }
         sender.sendMessage(ChatColor.YELLOW + "****************************************************************");
         sender.sendMessage(ChatColor.LIGHT_PURPLE + "/hubmagic" + ChatColor.DARK_AQUA + " See this help page.");

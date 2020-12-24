@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class TeleportGunCMD implements CommandExecutor
 {
@@ -27,19 +27,21 @@ public class TeleportGunCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack bow = new ItemStack(Material.BOW);
         ItemMeta bowmeta = bow.getItemMeta();
-        bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("TeleportGun.Name")));
+        bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("TeleportGun.Name")));
         bowmeta.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
         bowmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         bow.setItemMeta(bowmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.TeleportGun.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
+                
             }
             else {
             	if(sender instanceof Player) {
                 ((Player) sender).getInventory().addItem(bow);
                 ((Player) sender).getInventory().setItem(9, new ItemStack(Material.ARROW, 1));
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Teleport Gun!");
+                
             }
           }
         }

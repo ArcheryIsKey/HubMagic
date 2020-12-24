@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class WardrobeCMD implements CommandExecutor
 {
@@ -25,16 +25,18 @@ public class WardrobeCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack ward = new ItemStack(Material.LEATHER_CHESTPLATE);
         ItemMeta wardm = ward.getItemMeta();
-        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("Wardrobe.Name")));
+        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
         ward.setItemMeta(wardm);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.Wardrobe.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
+                
             }
             else {
             	if(sender instanceof Player) {
                 ((Player) sender).getInventory().addItem(ward);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Wardrobe Selector!");
+                
             	}
             }
         }

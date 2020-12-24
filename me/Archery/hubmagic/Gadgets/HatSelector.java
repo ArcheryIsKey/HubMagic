@@ -13,7 +13,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class HatSelector implements Listener
 {
@@ -25,10 +25,10 @@ public class HatSelector implements Listener
         Player p = e.getPlayer();
         ItemStack selector = new ItemStack(Material.BEACON);
         ItemMeta selectorm = selector.getItemMeta();
-        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("HatSelector.Name")));
+        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("HatSelector.Name")));
         selector.setItemMeta(selectorm);
-        if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.getPlayer().getInventory().getItemInMainHand().isSimilar(selector) && Main.plugin.config.getBoolean("Enable.HatSelector", true) && p.hasPermission("HubMagic.HatSelector.Use")) {
-            p.openInventory(Main.plugin.select);
+        if ((e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && e.getPlayer().getInventory().getItemInMainHand().isSimilar(selector) && HubMagic.plugin.config.getBoolean("Enable.HatSelector", true) && p.hasPermission("HubMagic.HatSelector.Use")) {
+            p.openInventory(HubMagic.plugin.select);
         }
     }
     
@@ -37,10 +37,10 @@ public class HatSelector implements Listener
         Player p = e.getPlayer();
         ItemStack selector = new ItemStack(Material.BEACON);
         ItemMeta selectorm = selector.getItemMeta();
-        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("HatSelector.Name")));
+        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("HatSelector.Name")));
         selector.setItemMeta(selectorm);
-        if (Main.plugin.config.getBoolean("Enable.HatSelector", true) && p.hasPermission("HubMagic.HatSelector.Use")) {
-            p.getInventory().setItem(Main.plugin.config.getInt("HatSelector.Slot"), selector);
+        if (HubMagic.plugin.config.getBoolean("Enable.HatSelector", true) && p.hasPermission("HubMagic.HatSelector.Use")) {
+            p.getInventory().setItem(HubMagic.plugin.config.getInt("HatSelector.Slot"), selector);
         }
     }
     
@@ -48,7 +48,7 @@ public class HatSelector implements Listener
     public void onClick(InventoryClickEvent e) {
         if (e.getWhoClicked() instanceof Player) {
             Player p = (Player)e.getWhoClicked();
-            if (e.getInventory().equals(Main.plugin.select)) {
+            if (e.getInventory().equals(HubMagic.plugin.select)) {
                 e.setCancelled(true);
                 p.getInventory().setHelmet(e.getCurrentItem());
                 p.updateInventory();

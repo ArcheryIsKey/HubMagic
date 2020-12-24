@@ -13,7 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class JoinBossBar implements Listener
 {
@@ -27,24 +27,24 @@ public class JoinBossBar implements Listener
     
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (Main.plugin.config.getBoolean("Enable.JoinBossBar", true)) {
-            if (Main.plugin.config.getBoolean("JoinBossBar.Animate", true)) {
+        if (HubMagic.plugin.config.getBoolean("Enable.JoinBossBar", true)) {
+            if (HubMagic.plugin.config.getBoolean("JoinBossBar.Animate", true)) {
                 animateBossBar(e.getPlayer());
             }
             else {
-                 BossBar bar = Bukkit.getServer().createBossBar(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("JoinBossBar.Message").replaceAll("%player%", e.getPlayer().getName())), BarColor.valueOf(Main.plugin.config.getString("JoinBossBar.BarColor")), BarStyle.valueOf(Main.plugin.config.getString("JoinBossBar.BarStyle")), BarFlag.valueOf(Main.plugin.config.getString("JoinBossBar.BarFlag")));
+                 BossBar bar = Bukkit.getServer().createBossBar(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("JoinBossBar.Message").replaceAll("%player%", e.getPlayer().getName())), BarColor.valueOf(HubMagic.plugin.config.getString("JoinBossBar.BarColor")), BarStyle.valueOf(HubMagic.plugin.config.getString("JoinBossBar.BarStyle")), BarFlag.valueOf(HubMagic.plugin.config.getString("JoinBossBar.BarFlag")));
                 bar.addPlayer(e.getPlayer());
             }
         }
     }
     
     private void animateBossBar( Player p) {
-        for ( String msgs : Main.plugin.config.getStringList("JoinBossBar.Messages")) {
+        for ( String msgs : HubMagic.plugin.config.getStringList("JoinBossBar.Messages")) {
             this.list.add(ChatColor.translateAlternateColorCodes('&', msgs.replaceAll("%player%", p.getName())));
         }
-         BossBar bar = Bukkit.getServer().createBossBar(".", BarColor.valueOf(Main.plugin.config.getString("JoinBossBar.BarColor")), BarStyle.valueOf(Main.plugin.config.getString("JoinBossBar.BarStyle")), BarFlag.valueOf(Main.plugin.config.getString("JoinBossBar.BarFlag")));
+         BossBar bar = Bukkit.getServer().createBossBar(".", BarColor.valueOf(HubMagic.plugin.config.getString("JoinBossBar.BarColor")), BarStyle.valueOf(HubMagic.plugin.config.getString("JoinBossBar.BarStyle")), BarFlag.valueOf(HubMagic.plugin.config.getString("JoinBossBar.BarFlag")));
         bar.addPlayer(p);
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HubMagic.plugin, new Runnable() {
             public void run() {
                  String message = JoinBossBar.this.list.get(count);
                 count++;
@@ -53,6 +53,6 @@ public class JoinBossBar implements Listener
                 }
                 bar.setTitle(message);
             }
-        }, 0L, 20L * Main.plugin.config.getLong("JoinBossBar.AnimateSpeed"));
+        }, 0L, 20L * HubMagic.plugin.config.getLong("JoinBossBar.AnimateSpeed"));
     }
 }

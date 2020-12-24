@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class InvisibilityClockCMD implements CommandExecutor
 {
@@ -25,16 +25,18 @@ public class InvisibilityClockCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack clock = new ItemStack(Material.CLOCK);
         ItemMeta clockmeta = clock.getItemMeta();
-        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("InvisibilityClock.Name")));
+        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.InvisibilityClock.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
+                
             }
             else {
             	if(sender instanceof Player) {
                 ((Player) sender).getInventory().addItem(clock);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Invisibility Clock!");
+                
             	}
             }
         }

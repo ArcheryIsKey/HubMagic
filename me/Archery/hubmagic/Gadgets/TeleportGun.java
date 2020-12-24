@@ -16,22 +16,22 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.projectiles.ProjectileSource;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class TeleportGun implements Listener
 {
     
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-    	if(Main.plugin.config.getBoolean("Enable.TeleportGun", true)) {
+    	if(HubMagic.plugin.config.getBoolean("Enable.TeleportGun", true)) {
         ItemStack bow = new ItemStack(Material.BOW);
         ItemMeta bowmeta = bow.getItemMeta();
-        bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("TeleportGun.Name")));
+        bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("TeleportGun.Name")));
         bowmeta.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
         bowmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         bow.setItemMeta(bowmeta);
         if(e.getPlayer().hasPermission("HubMagic.TeleportGun.Use")) {
-            e.getPlayer().getInventory().setItem(Main.plugin.config.getInt("TeleportGun.Slot"), bow);
+            e.getPlayer().getInventory().setItem(HubMagic.plugin.config.getInt("TeleportGun.Slot"), bow);
             e.getPlayer().getInventory().setItem(9, new ItemStack(Material.ARROW, 1));
           
         }
@@ -44,14 +44,14 @@ public class TeleportGun implements Listener
             Player p = (Player)e.getEntity();
             ItemStack bow = new ItemStack(Material.BOW);
             ItemMeta bowmeta = bow.getItemMeta();
-            bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("TeleportGun.Name")));
+            bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("TeleportGun.Name")));
             bow.setItemMeta(bowmeta);
-            if (p.hasPermission("HubMagic.TeleportGun.Use") && e.getBow().isSimilar(bow) && Main.plugin.config.getBoolean("Enable.TeleportGun", true) && !Main.plugin.haveCooldownsTeleportGun.contains(p.getUniqueId())) {
+            if (p.hasPermission("HubMagic.TeleportGun.Use") && e.getBow().isSimilar(bow) && HubMagic.plugin.config.getBoolean("Enable.TeleportGun", true) && !HubMagic.plugin.haveCooldownsTeleportGun.contains(p.getUniqueId())) {
             	e.setCancelled(true);
             	Arrow arrow = (Arrow) p.getWorld().spawnEntity(p.getLocation(), EntityType.ARROW);
             	arrow.setVelocity(e.getEntity().getVelocity());
             	arrow.setShooter(p);
-                Main.plugin.haveCooldownsTeleportGun.add(p.getUniqueId());
+                HubMagic.plugin.haveCooldownsTeleportGun.add(p.getUniqueId());
             }
         }
     }
@@ -63,7 +63,7 @@ public class TeleportGun implements Listener
             ProjectileSource shooter = arrow.getShooter();
             if (shooter instanceof Player) {
                 Player p = (Player)shooter;
-                if (Main.plugin.config.getBoolean("Enable.TeleportGun", true)) {
+                if (HubMagic.plugin.config.getBoolean("Enable.TeleportGun", true)) {
                     p.teleport(arrow.getLocation().add(0.0, 1.0, 0.0));
                     p.setVelocity(p.getVelocity());
                     arrow.remove();

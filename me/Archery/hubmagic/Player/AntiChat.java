@@ -6,15 +6,15 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class AntiChat implements Listener
 {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
-        if (Main.plugin.config.getBoolean("Disable.Chat", true) && !p.hasPermission("HubMagic.AntiChat.bypass")) {
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("UnableToChatMSG")));
+        if (HubMagic.plugin.config.getBoolean("Disable.Chat", true) && !p.hasPermission("HubMagic.AntiChat.bypass")) {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("UnableToChatMSG")));
             e.setCancelled(true);
         }
     }

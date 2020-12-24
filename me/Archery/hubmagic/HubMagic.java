@@ -50,7 +50,7 @@ import me.Archery.hubmagic.World.AntiMobSpawn;
 import me.Archery.hubmagic.World.AntiPlace;
 import me.Archery.hubmagic.World.AntiWeather;
 
-public class Main extends JavaPlugin implements Listener
+public class HubMagic extends JavaPlugin implements Listener
 {
     public FileConfiguration config;
     public Inventory select;
@@ -62,20 +62,21 @@ public class Main extends JavaPlugin implements Listener
     public ArrayList<UUID> haveCooldownsTeleportGun;
     public ArrayList<UUID> haveCooldownsSpeedStick;
     public ArrayList<Projectile> arrow;
-    public static Main plugin;
+    public static HubMagic plugin;
     
-    public Main() {
+    public HubMagic() {
         this.config = this.getConfig();
         this.select = Bukkit.createInventory(null, 27, ChatColor.translateAlternateColorCodes('&', ChatColor.translateAlternateColorCodes('&', this.config.getString("HatSelector.GUIName"))));
         this.ward = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', ChatColor.translateAlternateColorCodes('&', this.config.getString("Wardrobe.GUIName"))));
-        this.walkingparticles = new ArrayList<UUID>();
-        this.flyingwings = new ArrayList<UUID>();
-        this.invis = new ArrayList<UUID>();
-        this.haveCooldownsParticleGun = new ArrayList<UUID>();
-        this.haveCooldownsTeleportGun = new ArrayList<UUID>();
-        this.haveCooldownsSpeedStick = new ArrayList<UUID>();
+        this.walkingparticles = new ArrayList<>();
+        this.flyingwings = new ArrayList<>();
+        this.invis = new ArrayList<>();
+        this.haveCooldownsParticleGun = new ArrayList<>();
+        this.haveCooldownsTeleportGun = new ArrayList<>();
+        this.haveCooldownsSpeedStick = new ArrayList<>();
     }
     
+    @Override
     public void onEnable() {
         this.saveDefaultConfig();
         this.reloadConfig();
@@ -166,10 +167,12 @@ public class Main extends JavaPlugin implements Listener
         clearm.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&4&lClear Wardrobe"));
         clear.setItemMeta(clearm);
         this.ward.setItem(35, clear);
-        Main.plugin = this;
+        HubMagic.plugin = this;
     }
     
+    @Override
     public void onDisable() {
-        Main.plugin = null;
+        HubMagic.plugin = null;
+        
     }
 }

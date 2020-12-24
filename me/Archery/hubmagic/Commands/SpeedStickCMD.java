@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class SpeedStickCMD implements CommandExecutor
 {
@@ -25,16 +25,18 @@ public class SpeedStickCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack boot = new ItemStack(Material.STICK);
         ItemMeta bootmeta = boot.getItemMeta();
-        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("SpeedStick.Name")));
+        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("SpeedStick.Name")));
         boot.setItemMeta(bootmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.SpeedStick.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
+                
             }
             else {
             	if(sender instanceof Player) {
                 ((Player) sender).getInventory().addItem(boot);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Speed Stick!");
+                
             	}
             }
         }

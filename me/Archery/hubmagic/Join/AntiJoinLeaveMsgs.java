@@ -5,20 +5,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class AntiJoinLeaveMsgs implements Listener
 {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (Main.plugin.config.getBoolean("Disable.JoinMsgs", true)) {
+        if (HubMagic.plugin.config.getBoolean("Disable.JoinMsgs", true)) {
             e.setJoinMessage("");
         }
     }
     
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        if (Main.plugin.config.getBoolean("Disable.QuitMsgs", true)) {
+        if (HubMagic.plugin.config.getBoolean("Disable.QuitMsgs", true)) {
             e.setQuitMessage("");
         }
     }

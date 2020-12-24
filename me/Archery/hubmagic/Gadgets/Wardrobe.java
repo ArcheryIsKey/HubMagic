@@ -12,7 +12,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class Wardrobe implements Listener
 {
@@ -20,13 +20,13 @@ public class Wardrobe implements Listener
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if (Main.plugin.config.getBoolean("Enable.Wardrobe", true)) {
+        if (HubMagic.plugin.config.getBoolean("Enable.Wardrobe", true)) {
             ItemStack ward = new ItemStack(Material.LEATHER_CHESTPLATE);
             ItemMeta wardm = ward.getItemMeta();
-            wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("Wardrobe.Name")));
+            wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
             ward.setItemMeta(wardm);
             if (p.hasPermission("HubMagic.Wardrobe.Use")) {
-                p.getInventory().setItem(Main.plugin.config.getInt("Wardrobe.Slot"), ward);
+                p.getInventory().setItem(HubMagic.plugin.config.getInt("Wardrobe.Slot"), ward);
             }
         }
     }
@@ -36,15 +36,15 @@ public class Wardrobe implements Listener
         if (e.getHand() == EquipmentSlot.OFF_HAND) {
             return;
         }
-        if(Main.plugin.config.getBoolean("Enable.Wardrobe", true)) {	
+        if(HubMagic.plugin.config.getBoolean("Enable.Wardrobe", true)) {	
         Player p = e.getPlayer();
         ItemStack ward = new ItemStack(Material.LEATHER_CHESTPLATE);
         ItemMeta wardm = ward.getItemMeta();
-        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("Wardrobe.Name")));
+        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
         ward.setItemMeta(wardm);
         if (p.getInventory().getItemInMainHand().isSimilar(ward) && p.hasPermission("HubMagic.Wardrobe.Use")) {
         	
-            p.openInventory(Main.plugin.ward);
+            p.openInventory(HubMagic.plugin.ward);
         }
       }
     }
@@ -54,7 +54,7 @@ public class Wardrobe implements Listener
         if (e.getWhoClicked() instanceof Player) {
             Player p = (Player) e.getWhoClicked();
             ItemStack clicked = e.getCurrentItem();
-            if(e.getInventory().equals(Main.plugin.ward) && clicked != null) {
+            if(e.getInventory().equals(HubMagic.plugin.ward) && clicked != null) {
             
             switch(clicked.getType()) {
 				default: return;

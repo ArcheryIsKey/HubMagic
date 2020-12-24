@@ -4,13 +4,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class ClearInvOnJoin implements Listener
 {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (!e.getPlayer().hasPermission("HubMagic.InvClear.bypass") && Main.plugin.config.getBoolean("Enable.InvClearOnJoin", true)) {
+        if (!e.getPlayer().hasPermission("HubMagic.InvClear.bypass") && HubMagic.plugin.config.getBoolean("Enable.InvClearOnJoin", true)) {
             e.getPlayer().getInventory().clear();
         }
     }

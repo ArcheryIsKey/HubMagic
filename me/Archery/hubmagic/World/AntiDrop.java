@@ -5,16 +5,16 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
 
-import me.Archery.hubmagic.Main;
+import me.Archery.hubmagic.HubMagic;
 
 public class AntiDrop implements Listener
 {
     
     @EventHandler
     public void onDrop(PlayerDropItemEvent e) {
-        if (!e.getPlayer().hasPermission("HubMagic.AntiDrop.bypass") && Main.plugin.config.getBoolean("Disable.ItemDropping", true)) {
+        if (!e.getPlayer().hasPermission("HubMagic.AntiDrop.bypass") && HubMagic.plugin.config.getBoolean("Disable.ItemDropping", true)) {
             e.setCancelled(true);
-            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("UnableToDropItemsMSG")));
+            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("UnableToDropItemsMSG")));
         }
     }
 }
