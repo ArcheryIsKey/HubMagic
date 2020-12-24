@@ -1,4 +1,3 @@
-
 package me.Archery.hubmagic.Join;
 
 import org.bukkit.Color;

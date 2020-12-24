@@ -1,4 +1,3 @@
-
 package me.Archery.hubmagic.Commands;
 
 import org.bukkit.ChatColor;
@@ -16,14 +15,14 @@ public class ToggleWalkingParticles implements CommandExecutor
             return false;
         }
         Player p = (Player)sender;
-        if (cmd.getName().equalsIgnoreCase("walkingparticles") && Main.plugin.config.getBoolean("Enable.WalkingParticles", true) && p.hasPermission("HubMagic.WalkingParticles.Toggle")) {
+        if (Main.plugin.config.getBoolean("Enable.WalkingParticles", true) && p.hasPermission("HubMagic.WalkingParticles.Toggle")) {
             if (!Main.plugin.walkingparticles.contains(p.getUniqueId())) {
-                p.sendMessage(ChatColor.RED + " You've disabled Walking Particles!");
+                p.sendMessage(ChatColor.RED + " You've disabled walking particles!");
                 Main.plugin.walkingparticles.add(p.getUniqueId());
             }
-            else if (Main.plugin.walkingparticles.contains(p.getUniqueId())) {
+            else {
                 Main.plugin.walkingparticles.remove(p.getUniqueId());
-                p.sendMessage(ChatColor.GREEN + " You've enabled Walking Particles!");
+                p.sendMessage(ChatColor.GREEN + " You've enabled walking particles!");
             }
         }
         return true;

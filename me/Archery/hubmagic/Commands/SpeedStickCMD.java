@@ -1,9 +1,9 @@
-
 package me.Archery.hubmagic.Commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,34 +21,33 @@ public class SpeedStickCMD implements CommandExecutor
         this.pre = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]";
     }
     
-    public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
+    @SuppressWarnings("deprecation")
+	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack boot = new ItemStack(Material.STICK);
         ItemMeta bootmeta = boot.getItemMeta();
         bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("SpeedStick.Name")));
         boot.setItemMeta(bootmeta);
-        if (cmd.getName().equalsIgnoreCase("speedstick") && args.length == 0) {
+        if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.SpeedStick.Give")) {
                 sender.sendMessage(this.pre + " You may not use this command.");
             }
             else {
             	if(sender instanceof Player) {
-                ((Player) sender).getInventory().addItem(new ItemStack[] { boot });
+                ((Player) sender).getInventory().addItem(boot);
                 sender.sendMessage(this.pre + ChatColor.GREEN + " Here's your Speed Stick!");
             	}
             }
         }
         else if (args.length == 1) {
-            Player t = Bukkit.getPlayer(args[0]);
-            if (t.getName() == null) {
-            	sender.sendMessage(this.pre + ChatColor.RED + " Player not found.");
-            }
-            if (args.length == 1) {
-                t.getInventory().addItem(new ItemStack[] { boot });
-                t.sendMessage(this.pre + ChatColor.GREEN + " Here's your SpeedStick!");
-                sender.sendMessage(this.pre + ChatColor.GREEN + args[0] + " has received their SpeedStick!");
-            }
+        	OfflinePlayer t = Bukkit.getOfflinePlayer(args[0]);
+        	if(t.isOnline()) {
+            ((Player) t).getInventory().addItem(boot);
+            sender.sendMessage(this.pre + ChatColor.GREEN + " " + args[0] + " has received their Speed Stick.");
+        	} else {
+                sender.sendMessage(this.pre + ChatColor.RED + " Player not found.");
+        	}
         }
-    	
-        return true;
+		return true;
     }
 }
+

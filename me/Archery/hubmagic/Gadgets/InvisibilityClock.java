@@ -1,4 +1,3 @@
-
 package me.Archery.hubmagic.Gadgets;
 
 import java.io.File;
@@ -31,8 +30,7 @@ public class InvisibilityClock implements Listener
         this.plugin = instance;
     }
     
-    @SuppressWarnings("deprecation")
-	@EventHandler
+    @EventHandler
     public void onInteract(PlayerInteractEvent e) {
         if (e.getHand() == EquipmentSlot.OFF_HAND) {
             return;
@@ -43,23 +41,19 @@ public class InvisibilityClock implements Listener
         ItemMeta clockmeta = clock.getItemMeta();
         clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.pfile.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);
-        if (p.hasPermission("HubMagic.InvisibilityClock.Use") && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && p.getInventory().getItemInHand().isSimilar(clock)) {
+        if (p.hasPermission("HubMagic.InvisibilityClock.Use") && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && p.getInventory().getItemInMainHand().equals(clock)) {
             if (!this.plugin.invis.contains(p.getUniqueId())) {
-                for (Player players : Bukkit.getOnlinePlayers()) {
-                    this.plugin.invis.add(p.getUniqueId());
-                    p.hidePlayer(players);
-                }
+            	Bukkit.getOnlinePlayers().forEach(pl -> p.hidePlayer(Main.plugin, pl));
+            	this.plugin.invis.add(p.getUniqueId());
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("InvisibilityClock.PlayersHidden")));
             }
-            else if (this.plugin.invis.contains(p.getUniqueId())) {
-                for (Player players : Bukkit.getOnlinePlayers()) {
+            else {
+            	Bukkit.getOnlinePlayers().forEach(pl -> p.showPlayer(Main.plugin, pl));
                     this.plugin.invis.remove(p.getUniqueId());
-                    p.showPlayer(players);
                 }
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.plugin.config.getString("InvisibilityClock.PlayersShown")));
-             }
-          }
-       }
+        }
+      }
     }
     
     @EventHandler

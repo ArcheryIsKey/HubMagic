@@ -7,19 +7,10 @@ import org.bukkit.command.CommandSender;
 
 public class PluginCmds implements CommandExecutor
 {
-    String pre;
-    
-    public PluginCmds() {
-        this.pre = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]";
-    }
     
     public boolean onCommand(CommandSender sender, Command cmd, String commandlabel, String[] args) {
-       
-        if (!cmd.getName().equalsIgnoreCase("hubmagic")) {
-            return true;
-        }
         if (!sender.hasPermission("hubmagic.helsender")) {
-            sender.sendMessage(this.pre + " You cannot use this command.");
+            sender.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]" + " You cannot use this command.");
             return true;
         }
         sender.sendMessage(ChatColor.YELLOW + "****************************************************************");

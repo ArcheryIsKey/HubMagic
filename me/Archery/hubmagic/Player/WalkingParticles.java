@@ -1,4 +1,3 @@
-
 package me.Archery.hubmagic.Player;
 
 import org.bukkit.Particle;

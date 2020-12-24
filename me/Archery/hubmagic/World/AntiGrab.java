@@ -1,4 +1,3 @@
-
 package me.Archery.hubmagic.World;
 
 import org.bukkit.ChatColor;
