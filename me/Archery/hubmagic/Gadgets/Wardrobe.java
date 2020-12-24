@@ -43,7 +43,7 @@ public class Wardrobe implements Listener
         wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
         ward.setItemMeta(wardm);
         if (p.getInventory().getItemInMainHand().equals(ward) && p.hasPermission("HubMagic.Wardrobe.Use")) {
-        	
+        	e.setCancelled(true);
             p.openInventory(HubMagic.plugin.ward);
         }
       }
@@ -55,117 +55,98 @@ public class Wardrobe implements Listener
             Player p = (Player) e.getWhoClicked();
             ItemStack clicked = e.getCurrentItem();
             if(e.getInventory().equals(HubMagic.plugin.ward) && clicked != null) {
-            
+            	e.setCancelled(true);
             switch(clicked.getType()) {
-				default: return;
-				
+            
 			case BARRIER:
-				p.getInventory().setHelmet((ItemStack) null);
-	            p.getInventory().setChestplate((ItemStack) null);
-	            p.getInventory().setLeggings((ItemStack) null);
-	            p.getInventory().setBoots((ItemStack) null);
-	            e.setCancelled(true);
+				p.getInventory().setHelmet(null);
+	            p.getInventory().setChestplate(null);
+	            p.getInventory().setLeggings(null);
+	            p.getInventory().setBoots(null);
+	            
 	            break;
 				
 			case LEATHER_HELMET:
                 p.getInventory().setHelmet(new ItemStack(Material.LEATHER_HELMET));
-                e.setCancelled(true);
                 break;
             
 			case GOLDEN_HELMET:
                 p.getInventory().setHelmet(new ItemStack(Material.GOLDEN_HELMET));
-                e.setCancelled(true);
                  break;
             
 			case IRON_HELMET:
                 p.getInventory().setHelmet(new ItemStack(Material.IRON_HELMET));
-                e.setCancelled(true);
                 break;
             
 			case DIAMOND_HELMET:
                 p.getInventory().setHelmet(new ItemStack(Material.DIAMOND_HELMET));
-                e.setCancelled(true);
                 break;
             
 			case CHAINMAIL_HELMET:
                 p.getInventory().setHelmet(new ItemStack(Material.CHAINMAIL_HELMET));
-                e.setCancelled(true);
                 break;
             
 			case LEATHER_CHESTPLATE:
                 p.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
-                e.setCancelled(true);
                 break;
             
 			case GOLDEN_CHESTPLATE:
                 p.getInventory().setChestplate(new ItemStack(Material.GOLDEN_CHESTPLATE));
-                e.setCancelled(true);
                 break;
              
 			case IRON_CHESTPLATE:
                 p.getInventory().setChestplate(new ItemStack(Material.IRON_CHESTPLATE));
-                e.setCancelled(true);
                 break;
             
 			case DIAMOND_CHESTPLATE:
                 p.getInventory().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
-                e.setCancelled(true);
                 break;
             
 			case CHAINMAIL_CHESTPLATE:
                 p.getInventory().setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
-                e.setCancelled(true);
                 break;
             
             case GOLDEN_LEGGINGS:
                 p.getInventory().setLeggings(new ItemStack(Material.GOLDEN_LEGGINGS));
-                e.setCancelled(true);
                 break;
              
             case IRON_LEGGINGS:
                 p.getInventory().setLeggings(new ItemStack(Material.IRON_LEGGINGS));
-                e.setCancelled(true);
                 break;
             
             case DIAMOND_LEGGINGS:
                 p.getInventory().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
-                e.setCancelled(true);
                 break;
             
             case CHAINMAIL_LEGGINGS:
                 p.getInventory().setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
-                e.setCancelled(true);
                 break;
             
             case LEATHER_LEGGINGS:
                 p.getInventory().setLeggings(new ItemStack(Material.LEATHER_LEGGINGS));
-                e.setCancelled(true);
                 break;
             
             case LEATHER_BOOTS:
                 p.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
-                e.setCancelled(true);
                 break;
             
             case GOLDEN_BOOTS:
                 p.getInventory().setBoots(new ItemStack(Material.GOLDEN_BOOTS));
-                e.setCancelled(true);
                 break;
             
             case IRON_BOOTS:
                 p.getInventory().setBoots(new ItemStack(Material.IRON_BOOTS));
-                e.setCancelled(true);
                 break;
             
             case DIAMOND_BOOTS:
                 p.getInventory().setBoots(new ItemStack(Material.DIAMOND_BOOTS));
-                e.setCancelled(true);
                 break;
             
             case CHAINMAIL_BOOTS:
                 p.getInventory().setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
-                e.setCancelled(true);
                 break;
+                
+            default: break;
                }
             }
         }

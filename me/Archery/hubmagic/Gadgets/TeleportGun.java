@@ -64,8 +64,9 @@ public class TeleportGun implements Listener
             if (shooter instanceof Player) {
                 Player p = (Player)shooter;
                 if (HubMagic.plugin.config.getBoolean("Enable.TeleportGun", true)) {
-                    p.teleport(arrow.getLocation().add(0.0, 1.0, 0.0));
-                    p.setVelocity(p.getVelocity());
+                    
+                    p.teleport(arrow.getLocation().add(0, 1, 0).setDirection(arrow.getLocation().getDirection().multiply(-1)));
+                    //p.getLocation().setDirection(arrow.getLocation().getDirection().multiply(-1));
                     arrow.remove();
                 	
                 }
