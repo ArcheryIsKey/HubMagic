@@ -100,7 +100,7 @@ public class HubMagic extends JavaPlugin
         Bukkit.getServer().getPluginManager().registerEvents(new AdventureJoin(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ParticleGun(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new SpeedStick(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new InvisibilityClock(this), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new InvisibilityClock(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new HatSelector(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new Wardrobe(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new FlyingWings(), this);
