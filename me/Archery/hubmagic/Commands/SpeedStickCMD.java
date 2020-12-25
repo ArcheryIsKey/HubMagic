@@ -25,7 +25,7 @@ public class SpeedStickCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack boot = new ItemStack(Material.STICK);
         ItemMeta bootmeta = boot.getItemMeta();
-        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("SpeedStick.Name")));
+        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("SpeedStick.Name")));
         boot.setItemMeta(bootmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.SpeedStick.Give")) {

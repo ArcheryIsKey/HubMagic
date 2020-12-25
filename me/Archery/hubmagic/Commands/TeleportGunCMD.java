@@ -27,7 +27,7 @@ public class TeleportGunCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack bow = new ItemStack(Material.BOW);
         ItemMeta bowmeta = bow.getItemMeta();
-        bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("TeleportGun.Name")));
+        bowmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("TeleportGun.Name")));
         bowmeta.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
         bowmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         bow.setItemMeta(bowmeta);

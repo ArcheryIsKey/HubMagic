@@ -13,8 +13,8 @@ public class JoinActionbar implements Listener
 {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (HubMagic.plugin.config.getBoolean("Enable.JoinActionBar", true)) {
-            e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("JoinActionBar.Text")).replaceAll("%player%", e.getPlayer().getName())));
+        if (HubMagic.getInstance().config.getBoolean("Enable.JoinActionBar", true)) {
+            e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("JoinActionBar.Text")).replaceAll("%player%", e.getPlayer().getName())));
         }
     }
 }

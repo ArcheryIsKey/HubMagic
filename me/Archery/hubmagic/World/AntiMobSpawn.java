@@ -11,7 +11,7 @@ public class AntiMobSpawn implements Listener
     
     @EventHandler
     public void onMobSpawn(CreatureSpawnEvent e) {
-        if (HubMagic.plugin.config.getBoolean("Disable.MobSpawn", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Disable.MobSpawn", true)) {
             e.setCancelled(true);
         }
     }

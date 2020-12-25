@@ -12,9 +12,9 @@ import me.Archery.hubmagic.HubMagic;
 public class JoinTitle implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException, SecurityException, ClassNotFoundException, NoSuchMethodException, InstantiationException {
-        if (HubMagic.plugin.config.getBoolean("Enable.JoinTitle", true)) {
-        	String title = ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.getConfig().getString("JoinTitle.Title.Text").replaceAll("%player%", e.getPlayer().getName()));
-        	String subtitle = ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.getConfig().getString("JoinTitle.Subtitle.Text").replaceAll("%player%", e.getPlayer().getName()));
+        if (HubMagic.getInstance().config.getBoolean("Enable.JoinTitle", true)) {
+        	String title = ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().getConfig().getString("JoinTitle.Title.Text").replaceAll("%player%", e.getPlayer().getName()));
+        	String subtitle = ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().getConfig().getString("JoinTitle.Subtitle.Text").replaceAll("%player%", e.getPlayer().getName()));
         	e.getPlayer().sendTitle(title, subtitle, 20, 40, 20);
         	
         }

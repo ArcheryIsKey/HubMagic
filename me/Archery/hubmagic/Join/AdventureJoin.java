@@ -11,7 +11,7 @@ public class AdventureJoin implements Listener
 {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (!e.getPlayer().hasPermission("HubMagic.AdventureJoin.bypass") && HubMagic.plugin.config.getBoolean("Enable.AdventureOnJoin", true)) {
+        if (!e.getPlayer().hasPermission("HubMagic.AdventureJoin.bypass") && HubMagic.getInstance().config.getBoolean("Enable.AdventureOnJoin", true)) {
             e.getPlayer().setGameMode(GameMode.ADVENTURE);
         }
     }

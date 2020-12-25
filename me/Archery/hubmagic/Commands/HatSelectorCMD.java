@@ -25,7 +25,7 @@ public class HatSelectorCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack selector = new ItemStack(Material.BEACON);
         ItemMeta selectorm = selector.getItemMeta();
-        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("HatSelector.Name")));
+        selectorm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("HatSelector.Name")));
         selector.setItemMeta(selectorm);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.HatSelector.Give")) {

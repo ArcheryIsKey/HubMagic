@@ -174,4 +174,11 @@ public class HubMagic extends JavaPlugin
         HubMagic.plugin = null;
         
     }
+    
+    public static HubMagic getInstance() {
+    	if (plugin == null) {
+    		plugin = new HubMagic();
+       }
+       return plugin;
+   }
 }

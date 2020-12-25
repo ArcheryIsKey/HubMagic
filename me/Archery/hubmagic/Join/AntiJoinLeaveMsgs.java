@@ -11,14 +11,14 @@ public class AntiJoinLeaveMsgs implements Listener
 {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (HubMagic.plugin.config.getBoolean("Disable.JoinMsgs", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Disable.JoinMsgs", true)) {
             e.setJoinMessage("");
         }
     }
     
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        if (HubMagic.plugin.config.getBoolean("Disable.QuitMsgs", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Disable.QuitMsgs", true)) {
             e.setQuitMessage("");
         }
     }

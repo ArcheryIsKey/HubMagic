@@ -12,9 +12,9 @@ public class AntiDrop implements Listener
     
     @EventHandler
     public void onDrop(PlayerDropItemEvent e) {
-        if (!e.getPlayer().hasPermission("HubMagic.AntiDrop.bypass") && HubMagic.plugin.config.getBoolean("Disable.ItemDropping", true)) {
+        if (!e.getPlayer().hasPermission("HubMagic.AntiDrop.bypass") && HubMagic.getInstance().config.getBoolean("Disable.ItemDropping", true)) {
             e.setCancelled(true);
-            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("UnableToDropItemsMSG")));
+            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("UnableToDropItemsMSG")));
         }
     }
 }

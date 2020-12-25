@@ -25,7 +25,7 @@ public class ParticleGunCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack gun = new ItemStack(Material.DIAMOND_HORSE_ARMOR);
         ItemMeta gunmeta = gun.getItemMeta();
-        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("ParticleGun.Name")));
+        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.ParticleGun.Give")) {

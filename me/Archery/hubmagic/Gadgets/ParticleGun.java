@@ -27,10 +27,10 @@ public class ParticleGun implements Listener
     public void onJoin(PlayerJoinEvent e) {
         ItemStack gun = new ItemStack(Material.DIAMOND_HORSE_ARMOR);
         ItemMeta gunmeta = gun.getItemMeta();
-        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("ParticleGun.Name")));
+        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);
-        if (HubMagic.plugin.config.getBoolean("Enable.ParticleGun", true) && e.getPlayer().hasPermission("HubMagic.ParticleGun.Use")) {
-            e.getPlayer().getInventory().setItem(HubMagic.plugin.config.getInt("ParticleGun.Slot"), gun);
+        if (HubMagic.getInstance().config.getBoolean("Enable.ParticleGun", true) && e.getPlayer().hasPermission("HubMagic.ParticleGun.Use")) {
+            e.getPlayer().getInventory().setItem(HubMagic.getInstance().config.getInt("ParticleGun.Slot"), gun);
         }
     }
     
@@ -42,30 +42,30 @@ public class ParticleGun implements Listener
         Player p = e.getPlayer();
         ItemStack gun = new ItemStack(Material.DIAMOND_HORSE_ARMOR);
         ItemMeta gunmeta = gun.getItemMeta();
-        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("ParticleGun.Name")));
+        gunmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("ParticleGun.Name")));
         gun.setItemMeta(gunmeta);
-        if (HubMagic.plugin.config.getBoolean("Enable.ParticleGun", true) && e.getPlayer().hasPermission("HubMagic.ParticleGun.Use") && p.getInventory().getItemInMainHand().equals(gun) && !HubMagic.plugin.haveCooldownsParticleGun.contains(p.getUniqueId())) {
+        if (HubMagic.getInstance().config.getBoolean("Enable.ParticleGun", true) && e.getPlayer().hasPermission("HubMagic.ParticleGun.Use") && p.getInventory().getItemInMainHand().equals(gun) && !HubMagic.getInstance().haveCooldownsParticleGun.contains(p.getUniqueId())) {
         	Location pl = p.getLocation();
         	pl.add(0, 1.5, 0);
             Snowball snowball = (Snowball) p.getWorld().spawnEntity(pl, EntityType.SNOWBALL);
             snowball.setShooter(p);
             snowball.setVelocity(new Vector(5,5,5).multiply(p.getLocation().getDirection()));
-            HubMagic.plugin.haveCooldownsParticleGun.add(p.getUniqueId());
-            HubMagic.plugin.getServer().getScheduler().scheduleSyncDelayedTask(HubMagic.plugin, new Runnable() {
+            HubMagic.getInstance().haveCooldownsParticleGun.add(p.getUniqueId());
+            HubMagic.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(HubMagic.getInstance(), new Runnable() {
                 @Override
                 public void run() {
-                    HubMagic.plugin.haveCooldownsParticleGun.remove(p.getUniqueId());
-                    if (HubMagic.plugin.config.getInt("ParticleGun.Cooldown") >= 5 && HubMagic.plugin.config.getBoolean("Enable.CooldownAnnouce", true)) {
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("ParticleGun.CooldownMSG")));
+                    HubMagic.getInstance().haveCooldownsParticleGun.remove(p.getUniqueId());
+                    if (HubMagic.getInstance().config.getInt("ParticleGun.Cooldown") >= 5 && HubMagic.getInstance().config.getBoolean("Enable.CooldownAnnouce", true)) {
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("ParticleGun.CooldownMSG")));
                     }
                 }
-            }, (long)(20 * HubMagic.plugin.config.getInt("ParticleGun.Cooldown")));
+            }, (long)(20 * HubMagic.getInstance().config.getInt("ParticleGun.Cooldown")));
         }
     }
     
     @EventHandler
     public void hti(ProjectileHitEvent e) {
-        if (e.getEntity() instanceof Snowball && HubMagic.plugin.config.getBoolean("Enable.ParticleGun", true)) {
+        if (e.getEntity() instanceof Snowball && HubMagic.getInstance().config.getBoolean("Enable.ParticleGun", true)) {
         	e.getEntity().getLocation().getWorld().spawnParticle(Particle.LAVA, e.getEntity().getLocation().getX(), e.getEntity().getLocation().getY(), e.getEntity().getLocation().getZ(), 15);
         	e.getEntity().getLocation().getWorld().spawnParticle(Particle.CLOUD, e.getEntity().getLocation().getX(), e.getEntity().getLocation().getY(), e.getEntity().getLocation().getZ(), 15);
         	e.getEntity().getLocation().getWorld().spawnParticle(Particle.HEART, e.getEntity().getLocation().getX(), e.getEntity().getLocation().getY(), e.getEntity().getLocation().getZ(), 15);

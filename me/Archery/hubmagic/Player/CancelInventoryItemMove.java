@@ -13,7 +13,7 @@ public class CancelInventoryItemMove implements Listener
     public void onMove(InventoryClickEvent e) {
         if (e.getWhoClicked() instanceof Player) {
             Player p = (Player)e.getWhoClicked();
-            if (!p.hasPermission("HubMagic.InventoryMove.bypass") && HubMagic.plugin.config.getBoolean("Disable.ItemMovingInsideInv", true)) {
+            if (!p.hasPermission("HubMagic.InventoryMove.bypass") && HubMagic.getInstance().config.getBoolean("Disable.ItemMovingInsideInv", true)) {
                 e.setCancelled(true);
             	
             }

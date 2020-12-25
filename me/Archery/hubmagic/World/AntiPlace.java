@@ -12,9 +12,9 @@ public class AntiPlace implements Listener
     
     @EventHandler
     public void onBlockBreak(BlockPlaceEvent e) {
-        if (!e.getPlayer().hasPermission("HubMagic.AntiPlace.bypass") && HubMagic.plugin.config.getBoolean("Disable.BlockPlace", true)) {
+        if (!e.getPlayer().hasPermission("HubMagic.AntiPlace.bypass") && HubMagic.getInstance().config.getBoolean("Disable.BlockPlace", true)) {
             e.setCancelled(true);
-            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("UnableToPlaceBlocksMSG")));
+            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("UnableToPlaceBlocksMSG")));
         }
     }
 }

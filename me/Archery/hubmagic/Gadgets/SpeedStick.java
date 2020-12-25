@@ -21,10 +21,10 @@ public class SpeedStick implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         ItemStack boot = new ItemStack(Material.STICK);
         ItemMeta bootmeta = boot.getItemMeta();
-        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("SpeedStick.Name")));
+        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("SpeedStick.Name")));
         boot.setItemMeta(bootmeta);
-        if (HubMagic.plugin.config.getBoolean("Enable.SpeedStick", true) && e.getPlayer().hasPermission("HubMagic.SpeedStick.Use")) {
-            e.getPlayer().getInventory().setItem(HubMagic.plugin.config.getInt("SpeedStick.Slot"), boot);
+        if (HubMagic.getInstance().config.getBoolean("Enable.SpeedStick", true) && e.getPlayer().hasPermission("HubMagic.SpeedStick.Use")) {
+            e.getPlayer().getInventory().setItem(HubMagic.getInstance().config.getInt("SpeedStick.Slot"), boot);
         }
     }
     
@@ -36,15 +36,15 @@ public class SpeedStick implements Listener {
         Player p = e.getPlayer();
         ItemStack boot = new ItemStack(Material.STICK);
         ItemMeta bootmeta = boot.getItemMeta();
-        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("SpeedStick.Name")));
+        bootmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("SpeedStick.Name")));
         boot.setItemMeta(bootmeta);
-        if (HubMagic.plugin.config.getBoolean("Enable.SpeedStick", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Enable.SpeedStick", true)) {
             if (!p.getInventory().getItemInMainHand().equals(boot)) {
                 return;
             }
-            if (e.getPlayer().hasPermission("HubMagic.SpeedStick.Use") && !HubMagic.plugin.haveCooldownsSpeedStick.contains(p.getUniqueId())) {
+            if (e.getPlayer().hasPermission("HubMagic.SpeedStick.Use") && !HubMagic.getInstance().haveCooldownsSpeedStick.contains(p.getUniqueId())) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200, 2));
-                HubMagic.plugin.haveCooldownsSpeedStick.add(p.getUniqueId());
+                HubMagic.getInstance().haveCooldownsSpeedStick.add(p.getUniqueId());
             }
         }
     }

@@ -13,8 +13,8 @@ public class AntiChat implements Listener
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
-        if (HubMagic.plugin.config.getBoolean("Disable.Chat", true) && !p.hasPermission("HubMagic.AntiChat.bypass")) {
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("UnableToChatMSG")));
+        if (HubMagic.getInstance().config.getBoolean("Disable.Chat", true) && !p.hasPermission("HubMagic.AntiChat.bypass")) {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("UnableToChatMSG")));
             e.setCancelled(true);
         }
     }

@@ -10,7 +10,7 @@ public class ClearInvOnJoin implements Listener
 {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (!e.getPlayer().hasPermission("HubMagic.InvClear.bypass") && HubMagic.plugin.config.getBoolean("Enable.InvClearOnJoin", true)) {
+        if (!e.getPlayer().hasPermission("HubMagic.InvClear.bypass") && HubMagic.getInstance().config.getBoolean("Enable.InvClearOnJoin", true)) {
             e.getPlayer().getInventory().clear();
         }
     }

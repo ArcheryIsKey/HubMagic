@@ -25,7 +25,7 @@ public class WardrobeCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack ward = new ItemStack(Material.LEATHER_CHESTPLATE);
         ItemMeta wardm = ward.getItemMeta();
-        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
+        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("Wardrobe.Name")));
         ward.setItemMeta(wardm);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.Wardrobe.Give")) {

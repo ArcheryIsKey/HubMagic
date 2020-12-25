@@ -25,7 +25,7 @@ public class InvisibilityClockCMD implements CommandExecutor
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
         ItemStack clock = new ItemStack(Material.CLOCK);
         ItemMeta clockmeta = clock.getItemMeta();
-        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("InvisibilityClock.Name")));
+        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);
         if (args.length == 0) {
             if (!sender.hasPermission("HubMagic.InvisibilityClock.Give")) {

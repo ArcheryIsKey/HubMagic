@@ -12,10 +12,10 @@ public class AntiGrab implements Listener
     
     @EventHandler
     public void onDrop(EntityPickupItemEvent e) {
-        if (!e.getEntity().hasPermission("HubMagic.AntiGrab.bypass") && HubMagic.plugin.config.getBoolean("Disable.ItemGrabbing", true)) {
+        if (!e.getEntity().hasPermission("HubMagic.AntiGrab.bypass") && HubMagic.getInstance().config.getBoolean("Disable.ItemGrabbing", true)) {
             e.setCancelled(true);
-            if(!HubMagic.plugin.config.getString("UnableToGrabItemsMSG").isEmpty()) {
-            e.getEntity().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("UnableToGrabItemsMSG")));
+            if(!HubMagic.getInstance().config.getString("UnableToGrabItemsMSG").isEmpty()) {
+            e.getEntity().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("UnableToGrabItemsMSG")));
             }
         }
     }

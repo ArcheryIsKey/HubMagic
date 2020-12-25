@@ -11,7 +11,7 @@ public class AntiDamage implements Listener
 {
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
-        if (HubMagic.plugin.config.getBoolean("Disable.Damage", true) && e.getEntity() instanceof Player) {
+        if (HubMagic.getInstance().config.getBoolean("Disable.Damage", true) && e.getEntity() instanceof Player) {
             e.setCancelled(true);
         }
     }

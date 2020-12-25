@@ -23,22 +23,22 @@ public class InvisibilityClock implements Listener
         if (e.getHand() == EquipmentSlot.OFF_HAND) {
             return;
         }
-        if(HubMagic.plugin.config.getBoolean("Enable.InvisibilityClock", true)) {
+        if(HubMagic.getInstance().config.getBoolean("Enable.InvisibilityClock", true)) {
         Player p = e.getPlayer();
         ItemStack clock = new ItemStack(Material.CLOCK);
         ItemMeta clockmeta = clock.getItemMeta();
-        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("InvisibilityClock.Name")));
+        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);
         if (p.hasPermission("HubMagic.InvisibilityClock.Use") && (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) && p.getInventory().getItemInMainHand().equals(clock)) {
-            if (!HubMagic.plugin.invis.contains(p.getUniqueId())) {
-            	Bukkit.getOnlinePlayers().forEach(pl -> p.hidePlayer(HubMagic.plugin, pl));
-            	HubMagic.plugin.invis.add(p.getUniqueId());
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("InvisibilityClock.PlayersHidden")));
+            if (!HubMagic.getInstance().invis.contains(p.getUniqueId())) {
+            	Bukkit.getOnlinePlayers().forEach(pl -> p.hidePlayer(HubMagic.getInstance(), pl));
+            	HubMagic.getInstance().invis.add(p.getUniqueId());
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("InvisibilityClock.PlayersHidden")));
             }
             else {
-            	Bukkit.getOnlinePlayers().forEach(pl -> p.showPlayer(HubMagic.plugin, pl));
-                HubMagic.plugin.invis.remove(p.getUniqueId());
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("InvisibilityClock.PlayersShown")));
+            	Bukkit.getOnlinePlayers().forEach(pl -> p.showPlayer(HubMagic.getInstance(), pl));
+                HubMagic.getInstance().invis.remove(p.getUniqueId());
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("InvisibilityClock.PlayersShown")));
                 }
                
         }
@@ -49,10 +49,10 @@ public class InvisibilityClock implements Listener
     public void onJoin(PlayerJoinEvent e) {
         ItemStack clock = new ItemStack(Material.getMaterial("CLOCK"));
         ItemMeta clockmeta = clock.getItemMeta();
-        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("InvisibilityClock.Name")));
+        clockmeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("InvisibilityClock.Name")));
         clock.setItemMeta(clockmeta);
-        if (HubMagic.plugin.config.getBoolean("Enable.InvisibilityClock", true) && e.getPlayer().hasPermission("HubMagic.InvisibilityClock.Use")) {
-            e.getPlayer().getInventory().setItem(HubMagic.plugin.config.getInt("InvisibilityClock.Slot"), clock);
+        if (HubMagic.getInstance().config.getBoolean("Enable.InvisibilityClock", true) && e.getPlayer().hasPermission("HubMagic.InvisibilityClock.Use")) {
+            e.getPlayer().getInventory().setItem(HubMagic.getInstance().config.getInt("InvisibilityClock.Slot"), clock);
         }
     }
 }

@@ -17,7 +17,7 @@ public class JoinFirework implements Listener
     public void onJoin(final PlayerJoinEvent e) {
         final Firework f = (Firework) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation(), EntityType.FIREWORK);
         final FireworkMeta fm = f.getFireworkMeta();
-        if (HubMagic.plugin.config.getBoolean("Enable.JoinFirework", true) && e.getPlayer().hasPermission("HubMagic.JoinFirework.Use")) {
+        if (HubMagic.getInstance().config.getBoolean("Enable.JoinFirework", true) && e.getPlayer().hasPermission("HubMagic.JoinFirework.Use")) {
             fm.addEffect(FireworkEffect.builder().flicker(false).trail(true).with(FireworkEffect.Type.CREEPER).withColor(Color.ORANGE).withFade(Color.GREEN).withTrail().build());
             fm.setPower(2);
             f.setFireworkMeta(fm);

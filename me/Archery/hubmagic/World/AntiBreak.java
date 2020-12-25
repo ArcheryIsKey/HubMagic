@@ -12,9 +12,9 @@ public class AntiBreak implements Listener
     
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
-        if (HubMagic.plugin.config.getBoolean("Disable.BlockBreak", true) && !e.getPlayer().hasPermission("HubMagic.AntiBreak.bypass")) {
+        if (HubMagic.getInstance().config.getBoolean("Disable.BlockBreak", true) && !e.getPlayer().hasPermission("HubMagic.AntiBreak.bypass")) {
             e.setCancelled(true);
-            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("UnableToBreakBlocksMSG")));
+            e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("UnableToBreakBlocksMSG")));
         }
     }
 }

@@ -15,13 +15,13 @@ public class ToggleWalkingParticles implements CommandExecutor
             return false;
         }
         Player p = (Player)sender;
-        if (HubMagic.plugin.config.getBoolean("Enable.WalkingParticles", true) && p.hasPermission("HubMagic.WalkingParticles.Toggle")) {
-            if (!HubMagic.plugin.walkingparticles.contains(p.getUniqueId())) {
+        if (HubMagic.getInstance().config.getBoolean("Enable.WalkingParticles", true) && p.hasPermission("HubMagic.WalkingParticles.Toggle")) {
+            if (!HubMagic.getInstance().walkingparticles.contains(p.getUniqueId())) {
                 p.sendMessage(ChatColor.RED + " You've disabled walking particles!");
-                HubMagic.plugin.walkingparticles.add(p.getUniqueId());
+                HubMagic.getInstance().walkingparticles.add(p.getUniqueId());
             }
             else {
-                HubMagic.plugin.walkingparticles.remove(p.getUniqueId());
+                HubMagic.getInstance().walkingparticles.remove(p.getUniqueId());
                 p.sendMessage(ChatColor.GREEN + " You've enabled walking particles!");
             }
         }

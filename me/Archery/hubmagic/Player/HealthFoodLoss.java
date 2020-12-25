@@ -10,7 +10,7 @@ public class HealthFoodLoss implements Listener
 {
     @EventHandler
     public void onFoodLoss(FoodLevelChangeEvent e) {
-        if (HubMagic.plugin.config.getBoolean("Disable.FoodLoss", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Disable.FoodLoss", true)) {
             e.setCancelled(true);
         }
     }

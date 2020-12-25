@@ -20,13 +20,13 @@ public class Wardrobe implements Listener
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if (HubMagic.plugin.config.getBoolean("Enable.Wardrobe", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Enable.Wardrobe", true)) {
             ItemStack ward = new ItemStack(Material.LEATHER_CHESTPLATE);
             ItemMeta wardm = ward.getItemMeta();
-            wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
+            wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("Wardrobe.Name")));
             ward.setItemMeta(wardm);
             if (p.hasPermission("HubMagic.Wardrobe.Use")) {
-                p.getInventory().setItem(HubMagic.plugin.config.getInt("Wardrobe.Slot"), ward);
+                p.getInventory().setItem(HubMagic.getInstance().config.getInt("Wardrobe.Slot"), ward);
             }
         }
     }
@@ -36,15 +36,15 @@ public class Wardrobe implements Listener
         if (e.getHand() == EquipmentSlot.OFF_HAND) {
             return;
         }
-        if(HubMagic.plugin.config.getBoolean("Enable.Wardrobe", true)) {	
+        if(HubMagic.getInstance().config.getBoolean("Enable.Wardrobe", true)) {	
         Player p = e.getPlayer();
         ItemStack ward = new ItemStack(Material.LEATHER_CHESTPLATE);
         ItemMeta wardm = ward.getItemMeta();
-        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("Wardrobe.Name")));
+        wardm.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("Wardrobe.Name")));
         ward.setItemMeta(wardm);
         if (p.getInventory().getItemInMainHand().equals(ward) && p.hasPermission("HubMagic.Wardrobe.Use")) {
         	e.setCancelled(true);
-            p.openInventory(HubMagic.plugin.ward);
+            p.openInventory(HubMagic.getInstance().ward);
         }
       }
     }
@@ -54,7 +54,7 @@ public class Wardrobe implements Listener
         if (e.getWhoClicked() instanceof Player) {
             Player p = (Player) e.getWhoClicked();
             ItemStack clicked = e.getCurrentItem();
-            if(e.getInventory().equals(HubMagic.plugin.ward) && clicked != null) {
+            if(e.getInventory().equals(HubMagic.getInstance().ward) && clicked != null) {
             	e.setCancelled(true);
             	setWardrobe(p, clicked);
             }

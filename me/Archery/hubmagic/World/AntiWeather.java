@@ -11,7 +11,7 @@ public class AntiWeather implements Listener
 {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onRainStart(WeatherChangeEvent event) {
-        if (HubMagic.plugin.config.getBoolean("Disable.Weather", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Disable.Weather", true)) {
             event.setCancelled(true);
         }
     }

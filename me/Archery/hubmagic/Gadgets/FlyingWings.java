@@ -19,13 +19,13 @@ public class FlyingWings implements Listener
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if (HubMagic.plugin.config.getBoolean("Enable.FlyingWings", true)) {
+        if (HubMagic.getInstance().config.getBoolean("Enable.FlyingWings", true)) {
             ItemStack fly = new ItemStack(Material.ELYTRA);
             ItemMeta flym = fly.getItemMeta();
-            flym.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("FlyingWings.Name")));
+            flym.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("FlyingWings.Name")));
             fly.setItemMeta(flym);
             if (p.hasPermission("HubMagic.FlyingWings.Use")) {
-                p.getInventory().setItem(HubMagic.plugin.config.getInt("FlyingWings.Slot"), fly);
+                p.getInventory().setItem(HubMagic.getInstance().config.getInt("FlyingWings.Slot"), fly);
             }
         }
     }
@@ -38,24 +38,24 @@ public class FlyingWings implements Listener
         Player p = e.getPlayer();
         ItemStack fly = new ItemStack(Material.ELYTRA);
         ItemMeta flym = fly.getItemMeta();
-        flym.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("FlyingWings.Name")));
+        flym.setDisplayName(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("FlyingWings.Name")));
         fly.setItemMeta(flym);
-        if (p.getInventory().getItemInMainHand().isSimilar(fly) && e.getAction() == Action.RIGHT_CLICK_AIR && HubMagic.plugin.config.getBoolean("Enable.FlyingWings", true) && p.hasPermission("HubMagic.FlyingWings.Use")) {
-            if (!HubMagic.plugin.flyingwings.contains(p.getUniqueId())) {
+        if (p.getInventory().getItemInMainHand().isSimilar(fly) && e.getAction() == Action.RIGHT_CLICK_AIR && HubMagic.getInstance().config.getBoolean("Enable.FlyingWings", true) && p.hasPermission("HubMagic.FlyingWings.Use")) {
+            if (!HubMagic.getInstance().flyingwings.contains(p.getUniqueId())) {
                 p.getInventory().setChestplate(new ItemStack(Material.ELYTRA));
-                HubMagic.plugin.flyingwings.add(p.getUniqueId());
+                HubMagic.getInstance().flyingwings.add(p.getUniqueId());
                 p.getInventory().setItemInMainHand(fly);
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("FlyingWings.EnableMSG")));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("FlyingWings.EnableMSG")));
                 p.setAllowFlight(true);
                 p.setFlying(true);
                 e.setCancelled(true);
             }
-            else if (HubMagic.plugin.flyingwings.contains(p.getUniqueId())) {
+            else if (HubMagic.getInstance().flyingwings.contains(p.getUniqueId())) {
                 p.getInventory().setChestplate(null);
                 e.setCancelled(true);
                 p.getInventory().setItemInMainHand(fly);
-                HubMagic.plugin.flyingwings.remove(p.getUniqueId());
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.plugin.config.getString("FlyingWings.DisableMSG")));
+                HubMagic.getInstance().flyingwings.remove(p.getUniqueId());
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', HubMagic.getInstance().config.getString("FlyingWings.DisableMSG")));
                 p.setAllowFlight(false);
                 p.setFlying(false);
             }
