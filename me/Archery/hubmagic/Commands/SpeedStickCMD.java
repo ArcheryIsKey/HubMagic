@@ -15,7 +15,7 @@ import me.Archery.hubmagic.HubMagic;
 
 public class SpeedStickCMD implements CommandExecutor
 {
-    String pre;
+	private String pre;
     
     public SpeedStickCMD() {
         this.pre = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]";

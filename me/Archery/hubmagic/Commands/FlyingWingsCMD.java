@@ -15,7 +15,7 @@ import me.Archery.hubmagic.HubMagic;
 
 public class FlyingWingsCMD implements CommandExecutor
 {
-    String pre;
+    private String pre;
     
     public FlyingWingsCMD() {
         this.pre = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]";

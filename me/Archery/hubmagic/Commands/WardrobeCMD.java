@@ -15,7 +15,7 @@ import me.Archery.hubmagic.HubMagic;
 
 public class WardrobeCMD implements CommandExecutor
 {
-    String pre;
+	private String pre;
     
     public WardrobeCMD() {
         this.pre = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "HubMagic" + ChatColor.DARK_GRAY + "]";
