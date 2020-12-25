@@ -1,7 +1,7 @@
 name: HubMagic
 version: 5.8
 author: ArcheryIsKey
-main: me.Archery.hubmagic.HubMagic
+main: me.archery.hubmagic.hubmagic
 description: A plugin with fun tools for hubs.
 api-version: 1.16
 
